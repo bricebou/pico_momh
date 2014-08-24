@@ -4,9 +4,13 @@
 <title>{% if meta.title %}{{ meta.title|escape }} | {% endif %}{{ site_title }}</title>
 
 {% if meta.description %}<meta name="description" content="{{ meta.description }}">{% endif %}
+
 {% if meta.robots %}<meta name="robots" content="{{ meta.robots }}">{% endif %}
+
 {% if meta.author %}<meta name="author" content="{{ meta.author }}">{% endif %}
+
 {% if meta.license %}<meta name="license" content="{{ meta.license }}">{% endif %}
+
 {% if meta.tags %}<meta name="keywords" content="{{ meta.tags | join(',') }}">{% endif %}
 
 <!-- Normalize CSS -->
