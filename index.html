@@ -29,16 +29,17 @@
                 {% endfor %}
                 
                 <div class="pagination clearfix">
-                    {{ pagination_links }}
-                    <div class="pagination_pages">
+                    <ul>
+                        <li>{{ prev_page_link }}</li>
                         {% for i in 1..total_pages %}
                             {% if i == page_number %}
-                                <a href="/page/{{ i }}" class="page_item page_active">{{ i }}</a>
+                                <li><a href="/page/{{ i }}" class="page_item page_active">{{ i }}</a></li>
                             {% else %}
-                                <a href="/page/{{ i }}" class="page_item">{{ i }}</a>
+                                <li><a href="/page/{{ i }}" class="page_item">{{ i }}</a></li>
                             {% endif %}
                         {% endfor %}
-                    </div>
+                        <li>{{ next_page_link }}</li>
+                    </ul>
                 </div>
                 
             <!-- END front page -->

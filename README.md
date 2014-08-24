@@ -8,4 +8,5 @@ Thanks to:
 - [Dan Reeves](http://danreev.es/) for the nav bar and the use of the Awesome font
 - [Maximilian Beck](http://glumb.de/) for hover links transition, colors, and inspiration
 - Jeremy Keith for his [non jQuery FitText.js](https://github.com/adactio/FitText.js)
+- [Brajeshwar](http://brajeshwar.github.io/paginate/) for the pagination style
 - ...
