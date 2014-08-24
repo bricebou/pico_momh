@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+    {% include 'includes/head.html' %}
+</head>
+<body>
+    {% include 'includes/header.html' %}
+
+    <section id="content">
+        <div class="inner">
+            
+            {% if meta.template == 'category' and meta.title == "Tutos" %}
+                <h1>{{ meta.title }}</h1>
+                {% set cate = meta.title %}
+                <ul>
+                    {% for page in pages|reverse %}
+                        {% if page.category is sameas(cate) and page.template != 'category' %}
+                            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                        {% elseif page.template == 'category' and page.category is sameas(cate) %}
+                            {% set catesub = page.title %}
+                            {% if catesub is not sameas(cate) %}
+                                <li>
+                                    <a href="{{ page.url }}">{{ page.title }}</a>
+                                    <ul>
+                                        {% for page in pages %}
+                                            {% if page.category is sameas(catesub) and page.template != 'category' %}
+                                                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+            {% elseif meta.template == 'category' %}
+                <h1>{{ meta.title }}</h1>
+                {% set cate = meta.title %}
+                <ul>
+                    {% for page in pages %}
+                        {% if page.category is sameas(cate) and page.template != 'category' %}
+                            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                        {% elseif page.template == 'category' and page.category is sameas(cate) %}
+                            {% set catesub = page.title %}
+                            {% if catesub is not sameas(cate) %}
+                                <li>
+                                    <a href="{{ page.url }}">{{ page.title }}</a>
+                                    <ul>
+                                        {% for page in pages %}
+                                            {% if page.category is sameas(catesub) and page.template != 'category' %}
+                                                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+       </section>
+    <!-- FOOTER -->
+    {% include 'includes/footer.html' %}
+</body>
+</html>

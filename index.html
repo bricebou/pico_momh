@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+    {% include 'includes/head.html' %}
+</head>
+<body>
+    {% include 'includes/header.html' %}
+
+    <section id="content">
+        <div class="inner">
+            {% if is_front_page %}
+            <!-- front page -->
+                <div id="posts">
+    {% for page in paged_pages %}
+        <div class="post">
+            <h3><a href="{{ page.url }}">{{ page.title }}</a></h3>
+            <p class="meta">{{ page.date_formatted }}</p>
+            <p class="excerpt">{{ page.excerpt }}</p>
+        </div>
+    {% endfor %}
+    </div>
+    {{ pagination_links }}
+            <!-- END front page -->
+            {% else %}
+                <article>
+                <p class="meta">{{ meta.date }}</p>
+                    <h1>{{ meta.title }}</h1>
+                    {{ content }}
+
+                    {% if meta.coordinates %}
+                        <p>Coordonnées :</p>
+                        <ul>
+                        {% for coordinate in meta.coordinates %}
+                            <li>{{ coordinate }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if meta.address %}
+                        <p>Adresses :</p>
+                        <ul>
+                        {% for address in meta.address %}
+                            <li>{{ address }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {{ map_article }}
+
+                    {% if meta.tags %}
+                        <p class="meta">
+                            Tags : 
+                            {% for tag in meta.tags %}
+                                <a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>
+                            {% endfor %}
+                        </p>
+                    {% endif %}  
+                </article>
+
+            {% endif %}
+
+
+        </div> <!-- END .inner -->
+    </section>
+    
+    <!-- FOOTER -->
+    {% include 'includes/footer.html' %}
+
+
+</body>
+</html>
