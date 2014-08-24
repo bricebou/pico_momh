@@ -10,16 +10,37 @@
         <div class="inner">
             {% if is_front_page %}
             <!-- front page -->
-                <div id="posts">
-    {% for page in paged_pages %}
-        <div class="post">
-            <h3><a href="{{ page.url }}">{{ page.title }}</a></h3>
-            <p class="meta">{{ page.date_formatted }}</p>
-            <p class="excerpt">{{ page.excerpt }}</p>
-        </div>
-    {% endfor %}
-    </div>
-    {{ pagination_links }}
+                {% for page in paged_pages %}
+                    <article class="post">
+                        <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+                        <p class="meta clearfix">
+                            <span class="tags_lsp">
+                                {% if page.tags %}{% for tag in page.tags %}<a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
+                            </span>
+                            <span class="date_lsp">
+                                le {{ page.date|date("d/m/Y", "Europe/Paris") }}
+                            </span>
+                            
+                            
+                             
+                        </p>
+                        <p class="excerpt">{{ page.excerpt }}</p>
+                    </article>
+                {% endfor %}
+                
+                <div class="pagination clearfix">
+                    {{ pagination_links }}
+                    <div class="pagination_pages">
+                        {% for i in 1..total_pages %}
+                            {% if i == page_number %}
+                                <a href="/page/{{ i }}" class="page_item page_active">{{ i }}</a>
+                            {% else %}
+                                <a href="/page/{{ i }}" class="page_item">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                
             <!-- END front page -->
             {% else %}
                 <article>
