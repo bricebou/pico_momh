@@ -74,16 +74,22 @@
                     {{ map_article }}
                 
                     <div class="pagination_article">
-                    {% if prev_page %}
+                    {% if next_page %}
                         <div class="pa_recent">
-                            {{ prev_page.date|date("d/m/Y", "Europe/Paris") }}
-                            <a href="{{ prev_page.url }}">{{ prev_page.title }}</a>
+                            <div class="pa_arrow"><i class="fa fa-angle-double-left"></i></div>
+                            <div class="pa_title">
+                                <span>{{ next_page.date|date("d/m/Y", "Europe/Paris") }} &ndash;</span>
+                                <a href="{{ next_page.url }}">{{ next_page.title }}</a>
+                            </div>
                         </div>    
                     {% endif %} 
-                    {% if next_page %}
+                    {% if prev_page %}
                         <div class="pa_older">
-                            {{ next_page.date|date("d/m/Y", "Europe/Paris") }}
-                            <a href="{{ next_page.url }}">{{ next_page.title }}</a>
+                            <div class="pa_title">
+                                <a href="{{ prev_page.url }}">{{ prev_page.title }}</a>
+                                <span>&ndash;{{ prev_page.date|date("d/m/Y", "Europe/Paris") }}</span>
+                            </div>
+                            <div class="pa_arrow"><i class="fa fa-angle-double-right"></i></div>
                         </div>
                     {% endif %} 
                     </div>
