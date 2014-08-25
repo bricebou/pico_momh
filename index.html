@@ -14,15 +14,12 @@
                     <article class="post">
                         <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
                         <p class="meta clearfix">
-                            <span class="tags_lsp">
-                                {% if page.tags %}{% for tag in page.tags %}<a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
-                            </span>
                             <span class="date_lsp">
-                                le {{ page.date|date("d/m/Y", "Europe/Paris") }}
+                                le {{ page.date|date("d/m/Y", "Europe/Paris") }} dans {{ page.category }}
                             </span>
-                            
-                            
-                             
+                            <span class="tags_lsp">
+                                {% if page.tags %}<i class="fa fa-tags"></i>{% for tag in page.tags %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
+                            </span>
                         </p>
                         <p class="excerpt">{{ page.excerpt }}</p>
                     </article>
@@ -45,37 +42,52 @@
             <!-- END front page -->
             {% else %}
                 <article>
-                <p class="meta">{{ meta.date }}</p>
-                    <h1>{{ meta.title }}</h1>
+                    <h1>{{ meta.title }} </h1>
+                    <p class="meta clearfix">
+                        <span class="date_lsp">
+                            le {{ meta.date|date("d/m/Y", "Europe/Paris") }} dans {{ meta.category }}
+                        </span>
+                        <span class="tags_lsp">
+                            {% if meta.tags %}<i class="fa fa-tags"></i>{% for tag in meta.tags %}<a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
+                        </span>
+                    </p>
+
                     {{ content }}
 
-                    {% if meta.coordinates %}
-                        <p>Coordonnées :</p>
-                        <ul>
-                        {% for coordinate in meta.coordinates %}
-                            <li>{{ coordinate }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                    {% if meta.address %}
-                        <p>Adresses :</p>
-                        <ul>
-                        {% for address in meta.address %}
-                            <li>{{ address }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
+                {% if meta.coordinates %}
+                    <p>Coordonnées :</p>
+                    <ul>
+                    {% for coordinate in meta.coordinates %}
+                        <li>{{ coordinate }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if meta.address %}
+                    <p>Adresses :</p>
+                    <ul>
+                    {% for address in meta.address %}
+                        <li>{{ address }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
 
                     {{ map_article }}
-
-                    {% if meta.tags %}
-                        <p class="meta">
-                            Tags : 
-                            {% for tag in meta.tags %}
-                                <a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>
-                            {% endfor %}
-                        </p>
-                    {% endif %}  
+                
+                    <div class="pagination_article">
+                    {% if prev_page %}
+                        <div class="pa_recent">
+                            {{ prev_page.date|date("d/m/Y", "Europe/Paris") }}
+                            <a href="{{ prev_page.url }}">{{ prev_page.title }}</a>
+                        </div>    
+                    {% endif %} 
+                    {% if next_page %}
+                        <div class="pa_older">
+                            {{ next_page.date|date("d/m/Y", "Europe/Paris") }}
+                            <a href="{{ next_page.url }}">{{ next_page.title }}</a>
+                        </div>
+                    {% endif %} 
+                    </div>
+                 
                 </article>
 
             {% endif %}
