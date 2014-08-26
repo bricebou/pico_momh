@@ -236,7 +236,9 @@ footer {
 article {
 	margin-bottom: 3rem;
 
-	& h1 {
+	& h1,
+	// for titles in tag pages
+	& h2.h1 {
 		border-bottom: 1px solid #e2ebce;
     letter-spacing: -1px;
     line-height: 1.2;
@@ -429,3 +431,35 @@ article {
 		}
 	}
 }
+
+.tags_list {
+	list-style: none outside none;
+	padding: 0;	
+
+  -webkit-column-count: 5; /* Chrome, Safari, Opera */
+  	 -moz-column-count: 5; /* Firefox */
+  				column-count: 5;
+	-webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+		 -moz-column-gap: 40px; /* Firefox */
+  				column-gap: 40px;
+  @media only screen and (max-width: 700px) {
+		& {
+	    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+	  		 -moz-column-count: 3; /* Firefox */
+		  				column-count: 3;
+			-webkit-column-gap: 30px; /* Chrome, Safari, Opera */
+	  		 -moz-column-gap: 30px; /* Firefox */
+	  		 			column-gap: 30px;
+		}
+	}
+	@media only screen and (max-width: 400px) {
+		& {
+	    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+	  		 -moz-column-count: 2; /* Firefox */
+		  				column-count: 2;
+			-webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+	  		 -moz-column-gap: 20px; /* Firefox */
+	  		 			column-gap: 20px;
+		}
+	}
+} 
