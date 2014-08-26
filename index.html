@@ -30,9 +30,9 @@
                         <li>{{ prev_page_link }}</li>
                         {% for i in 1..total_pages %}
                             {% if i == page_number %}
-                                <li><a href="/page/{{ i }}" class="page_item page_active">{{ i }}</a></li>
+                                <li class="pi pi_a"><a href="/page/{{ i }}" class="page_item page_active">{{ i }}</a></li>
                             {% else %}
-                                <li><a href="/page/{{ i }}" class="page_item">{{ i }}</a></li>
+                                <li class="pi"><a href="/page/{{ i }}" class="page_item">{{ i }}</a></li>
                             {% endif %}
                         {% endfor %}
                         <li>{{ next_page_link }}</li>
@@ -75,22 +75,24 @@
                 
                     <div class="pagination_article">
                     {% if next_page %}
-                        <div class="pa_recent">
+                        <a href="{{ next_page.url }}" class="pa_recent">
                             <div class="pa_arrow"><i class="fa fa-angle-double-left"></i></div>
                             <div class="pa_title">
-                                <span>{{ next_page.date|date("d/m/Y", "Europe/Paris") }} &ndash;</span>
-                                <a href="{{ next_page.url }}">{{ next_page.title }}</a>
+                                <span class="pa_date">{{ next_page.date|date("d/m/Y", "Europe/Paris") }}</span>
+                                <br>
+                                <span>{{ next_page.title }}</span>
                             </div>
-                        </div>    
+                        </a>    
                     {% endif %} 
                     {% if prev_page %}
-                        <div class="pa_older">
+                        <a href="{{ prev_page.url }}" class="pa_older">
                             <div class="pa_title">
-                                <a href="{{ prev_page.url }}">{{ prev_page.title }}</a>
-                                <span>&ndash;{{ prev_page.date|date("d/m/Y", "Europe/Paris") }}</span>
+                                <span>{{ prev_page.title }}</span>
+                                <br>
+                                <span class="pa_date">{{ prev_page.date|date("d/m/Y", "Europe/Paris") }}</span>
                             </div>
                             <div class="pa_arrow"><i class="fa fa-angle-double-right"></i></div>
-                        </div>
+                        </a>
                     {% endif %} 
                     </div>
                  
