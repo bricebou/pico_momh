@@ -1,0 +1,431 @@
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  padding-bottom: 1rem;
+  min-height: 100%;
+  background-color: $color_bg;
+}
+
+.inner {
+	max-width: $width_max;
+	margin: auto;
+	color: $color_txt;
+	padding: 0 $inner_pad;
+}
+
+// clear
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+
+// Links
+a,
+a:visited {
+	text-decoration: none;
+	color: $color_a;
+	transition: all 0.2s linear 0s;
+
+	&:hover,
+	&:active {
+		color: $color_hvr;
+	}
+	
+	// &.hvr_under:hover,
+	// &.hvr_under:active {
+	// 	text-decoration: underline;
+	// }
+
+	&.hvr_over:hover,
+	&.hvr_over:active {
+		text-decoration: overline;
+	}
+}
+
+// Mail
+span.email {
+	direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+code {
+  background: none repeat scroll 0 0 #eee;
+  color: #333;
+  font-family: Courier,"Courier New",Monaco,Tahoma;
+  padding: 0 2px;
+}
+
+#header {
+	margin-bottom: 3em;
+  padding: 0 0 1em;
+ 	background-color: $color_hbg;
+
+	& h1#site_title {
+		font-size: 2rem;
+		font-family: $font_title;
+		font-weight: 600;
+		text-align: center;
+		margin-bottom: 2rem;
+    margin-top: 1rem;
+	}
+
+	& a, & a:visited {
+		color: $color_ha;
+	}
+	& a:hover, & a:active {
+		color: $color_hvr;
+	}
+	
+	nav, nav ul {
+	    display: block;
+	    margin: 0;
+	    width: 100%;	    
+	}
+	nav {
+    // border-bottom: 1px solid #eaeaea;
+    // padding: 5px 0 2em;
+
+    & ul {
+	    padding: 0;
+	    float: left;
+	    position: relative;
+		}
+
+		& > ul {
+			text-align: right;
+
+			& > li {
+				color: $color_ha;
+				line-height: 1.1;
+
+				
+
+				& a, & a:hover, & a:visited, & a:active {
+					color: unset;
+					text-decoration: none;
+				}
+				&:hover {
+		    	// text-decoration: overline;
+		    	border-top: 1px solid $color_hvr;
+		    	color: $color_hvr;
+
+		    	& > ul {
+						display: block;
+			    }
+			    &:last-of-type:hover > ul {
+						text-align: right;
+			    }
+	    	}
+
+	    	@media only screen and (max-width: 700px) {
+					& {
+				    margin: 0;
+				    width: 49%;
+				    text-align: left;
+				    line-height: inherit;
+				  }
+
+			    &:hover {
+						border: none;
+				    ul {
+							display: none;
+						}
+			    }
+				}
+				@media only screen and (max-width: 400px) {
+					& {
+					    margin: 0;
+					    width: 100%;
+					    text-align: left;
+					    line-height: inherit;
+					  }
+
+			    &:hover {
+						border: none;
+				    ul {
+							display: none;
+						}
+			    }
+				}
+			}
+		}
+
+		& li {
+	    display: inline-block;
+	    list-style-type: none;
+	    margin-right: 1em;
+	    text-align: center;
+	    width: auto;
+
+
+	    &:last-of-type {
+	    	margin-right: 0;
+	    }
+
+	    & > ul {
+	    	display: none;
+		    float: none;
+		    left: 0;
+		    position: absolute;
+		    text-align: center;
+		    padding: 1.4em 0 1em;
+		    color: $color_ha;
+
+				& a, & a:visited {
+		    		color: $color_a;
+	    	}
+	    	& a:active, & a:hover {
+	    		color: $color_hvr;
+	    		text-decoration: underline;
+	    	}
+
+	    	& > li {
+	    		width: auto;
+	    		margin-right: 0;
+
+	    		&:before {
+		    		content: " / ";
+		    	}
+		    	&:last-of-type:after {
+		    		content: " /";
+		    	}
+	    	}
+	    }
+	    
+		}
+	}
+} // END #header
+
+footer {
+  bottom: 0;
+  height: 2rem;
+  left: 0;
+  padding: 1rem 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  font-size: 0.8rem;
+	& .footer_content {
+		border-top: 1px solid $color_brd;
+
+		@media only screen and (max-width: 700px) {
+			& p {
+		    margin: 0;
+		    width: 49%;
+		    text-align: left;
+			}
+		}
+		@media only screen and (max-width: 400px) {
+			& p {
+			    margin: 0;
+			    float: none;
+			    width: 100%;
+			    text-align: left;
+			}
+		}
+	}
+}
+
+article {
+	margin-bottom: 3rem;
+
+	& h1 {
+		border-bottom: 1px solid #e2ebce;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+	}
+
+	& p.meta {
+		font-size: 0.8rem;
+		font-style: italic;
+
+		& span.date_lsp {
+			float: left;
+		}
+
+		& span.tags_lsp {
+			float: right;
+
+			& a:after {
+	    		content: " ";
+    	}
+    	& a:last-of-type:after {
+    		content: "";
+    	}
+		}
+
+		@media only screen and (max-width: 700px) {
+			& span.date_lsp,
+			& span.tags_lsp {
+					display: inline-block;
+			    margin: 0;
+			    float: none;
+			    width: 100%;
+			    text-align: left;
+			}
+		}
+	}
+}
+
+// Based on http://brajeshwar.github.io/paginate/
+.pagination {
+	text-align: center;
+	margin-bottom: 4rem;
+	margin-top: 2rem;
+	padding-top: 2rem;
+	border-top: 1px solid $color_brd;
+
+	& ul {
+		list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+		
+
+		& li {
+			display: none;
+
+			&:first-child {
+	    	display: inline;
+	    }
+	    &:last-child {
+				display: inline;
+	    }
+
+	    & a {
+		    border-radius: 3px;
+		    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+		    display: inline-block;
+		    font-size: 0.8rem;
+		    margin: 1px 2px;
+		    padding: 5px 10px;
+		    text-decoration: none;
+
+		    &:hover, &:focus {
+		    	background-color: $color_hvr;
+		    	color: #fff;
+		    }
+
+		    
+		    &.page_active {
+		    	background-color: $color_hbg;
+			    border-color: $color_brd;
+			    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.75) inset;
+			    color: #fff;
+			    text-shadow: 0 1px 0 black;
+		    }
+    	}
+		}
+	}
+	@media only screen and (min-width: 700px) {
+		& ul {
+			list-style: none outside none;
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+
+	    overflow: hidden;
+	    padding: 0 10%;
+	    position: relative;
+			text-overflow: ellipsis;
+	    white-space: nowrap;
+	    width: 80%;
+
+	    & li {
+	    	display: inline;
+
+	    	&:first-child {
+		    	left: 0;
+			    margin-left: 0;
+			    position: absolute;
+		    }
+		    &:last-child {
+		    	margin-right: 0;
+			    position: absolute;
+			    right: 0;
+		    }
+	    }
+		}
+	}
+}
+
+// Previous/Next links in blog posts
+.pagination_article {
+	border-top: 1px solid $color_brd;
+  margin-top: 3rem;
+  padding-top: 1rem;
+
+	& a {
+		text-align:center;
+		display: block;
+
+		&.pa_older {
+			& .pa_arrow {
+				margin-left: 2%;
+			}
+			& .pa_title {
+				text-align: right;
+			}
+		} 
+		&.pa_recent .pa_arrow {
+			margin-right: 2%;
+		}
+
+		& div {
+		  display:inline-block;
+		  vertical-align:middle;
+		  text-align:left;
+		  &.pa_arrow {
+				font-size: 2rem;
+	    	width: 1.5rem;
+			}
+			&.pa_title {
+				max-width: 75%;
+				& span {
+					font-size: 0.8rem;
+				}
+				& .pa_date {
+					font-style: italic;
+					display: inline-block;
+					width: 100%;
+    			font-size: 0.7rem;
+				}
+			}
+		}
+		
+	}
+}
+
+// For Syntaxhighliter -- override shCore.css
+.syntaxhighlighter {
+	padding: 0.5em 0;
+
+	& > table {
+
+		& > tbody {
+
+			& > tr {
+
+				& > td {
+
+					& > div {
+						font-size: 0.8rem!important;
+
+						& > div > code {
+							font-size: 0.8rem!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
