@@ -251,6 +251,8 @@ article {
     text-align: center; }
     .pagination ul li {
       display: none; }
+      .pagination ul li.pi_a {
+        display: inline; }
       .pagination ul li:first-child {
         display: inline; }
       .pagination ul li:last-child {
@@ -272,6 +274,10 @@ article {
           box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.75) inset;
           color: #fff;
           text-shadow: 0 1px 0 black; }
+          .pagination ul li a.page_active .fa {
+            display: none; }
+          .pagination ul li a.page_active span {
+            display: inline-block; }
   @media only screen and (min-width: 700px) {
     .pagination ul {
       list-style: none outside none;
@@ -293,7 +299,13 @@ article {
         .pagination ul li:last-child {
           margin-right: 0;
           position: absolute;
-          right: 0; } }
+          right: 0; }
+        .pagination ul li a.page_active span {
+          display: none; }
+        .pagination ul li a.page_active .fa {
+          display: inline; }
+          .pagination ul li a.page_active .fa:after {
+            content: ""; } }
 
 .pagination_article {
   border-top: 1px solid #e2ebce;

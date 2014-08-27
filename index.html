@@ -15,7 +15,7 @@
                         <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
                         <p class="meta clearfix">
                             <span class="date_lsp">
-                                le {{ page.date|date("d/m/Y", "Europe/Paris") }} dans {{ page.category }}
+                                le {{ page.date|date("d/m/Y", "Europe/Paris") }} {% if page.category %}dans {{ page.category }} {% endif %}
                             </span>
                             <span class="tags_lsp">
                                 {% if page.tags %}<i class="fa fa-tags"></i>{% for tag in page.tags %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
@@ -30,7 +30,7 @@
                         <li>{{ prev_page_link }}</li>
                         {% for i in 1..total_pages %}
                             {% if i == page_number %}
-                                <li class="pi pi_a"><a href="/page/{{ i }}" class="page_item page_active">{{ i }}</a></li>
+                                <li class="pi pi_a"><a href="/page/{{ i }}" class="page_item page_active"><i class="fa fa-clock-o"></i><span>{{ i }}</span></a></li>
                             {% else %}
                                 <li class="pi"><a href="/page/{{ i }}" class="page_item">{{ i }}</a></li>
                             {% endif %}
@@ -45,7 +45,7 @@
                     <h1>{{ meta.title }} </h1>
                     <p class="meta clearfix">
                         <span class="date_lsp">
-                            le {{ meta.date|date("d/m/Y", "Europe/Paris") }} dans {{ meta.category }}
+                            le {{ meta.date|date("d/m/Y", "Europe/Paris") }} {% if meta.category %}dans {{ meta.category }} {% endif %}
                         </span>
                         <span class="tags_lsp">
                             {% if meta.tags %}<i class="fa fa-tags"></i>{% for tag in meta.tags %}<a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 

@@ -295,14 +295,17 @@ article {
 
 		& li {
 			display: none;
-
+			
+			&.pi_a {
+				display: inline;
+			}
 			&:first-child {
 	    	display: inline;
 	    }
 	    &:last-child {
 				display: inline;
 	    }
-
+			
 	    & a {
 		    border-radius: 3px;
 		    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
@@ -324,6 +327,13 @@ article {
 			    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.75) inset;
 			    color: #fff;
 			    text-shadow: 0 1px 0 black;
+
+			    & .fa {
+			    	display: none;
+			    }
+			    & span {
+			    	display: inline-block;
+			    }
 		    }
     	}
 		}
@@ -354,6 +364,18 @@ article {
 		    	margin-right: 0;
 			    position: absolute;
 			    right: 0;
+		    }
+
+		    & a.page_active {
+		    	span {
+		    		display: none;
+		    	}
+		    	.fa {
+		    		display: inline;
+		    		&:after {
+					    content: "";
+						}
+		    	}
 		    }
 	    }
 		}
