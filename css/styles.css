@@ -382,4 +382,65 @@ article {
       /* Firefox */
       column-gap: 20px; } }
 
+ul.wlist, ul.wlist li {
+  list-style: none;
+  padding: 0; }
+
+.vtl {
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  position: relative; }
+  .vtl:before {
+    background-color: #374641;
+    bottom: 0;
+    content: "";
+    left: 5.4rem;
+    position: absolute;
+    top: 0;
+    width: 0.15rem; }
+  .vtl > li {
+    position: relative; }
+    .vtl > li a:hover .vtl_point .fa:before {
+      content: "\f111"; }
+    .vtl > li .vtl_date {
+      display: block;
+      padding-right: 2rem;
+      position: absolute;
+      top: 0.2rem;
+      width: 4rem; }
+      .vtl > li .vtl_date span {
+        display: block;
+        font-size: 0.8rem;
+        font-style: italic;
+        text-align: right; }
+    .vtl > li .vtl_label {
+      margin: 0 0 1rem 6rem;
+      padding: 0rem 1rem 1rem;
+      position: relative; }
+    .vtl > li .vtl_point {
+      color: #374641;
+      font-size: 1rem;
+      left: 5.05rem;
+      position: absolute;
+      top: 0; }
+      .vtl > li .vtl_point .fa:before {
+        content: "\f10c"; }
+      .vtl > li .vtl_point .fa:after {
+        content: ""; }
+
+.supcateg > li {
+  margin-bottom: 2rem; }
+  .supcateg > li:last-child > ul {
+    margin-bottom: 6rem; }
+  .supcateg > li .fa:before {
+    content: "\f10c"; }
+  .supcateg > li a:hover .fa {
+    color: #374641; }
+  .supcateg > li a:hover .fa:before {
+    content: "\f111"; }
+
+.categ > li:last-child {
+  margin-bottom: 6rem; }
+
 /*# sourceMappingURL=styles.css.map */

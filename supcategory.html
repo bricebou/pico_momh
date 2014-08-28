@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+    {% include 'includes/head.html' %}
+</head>
+<body>
+    {% include 'includes/header.html' %}
+
+    <section id="content">
+        <div class="inner">
+            <article>
+                <h1>{{ meta.title }}</h1>
+                
+
+                {% if meta.title == "Tutos" %}
+                {% set cate = meta.title %}
+                <ul class="wlist supcateg">
+                    {% for page in pages|reverse %}
+                        {% if page.category is sameas(cate) and page.template != 'category' %}
+                        <li>
+                            <a href="{{ page.url }}">
+                                <i class="fa"></i>
+                                {{ page.title }}
+                            </a>
+                        </li>
+                        {% elseif page.category is sameas(cate) and page.template == 'category' %}
+                            {% set catesub = page.title %}
+                            {% if catesub is not sameas(cate) %}
+                                <li>
+                                    <a href="{{ page.url }}">
+                                        <i class="fa"></i>
+                                        {{ page.title }}
+                                    </a>
+                                    <ul class="wlist vtl">
+                                    {% for page in pages %}
+                                        {% if page.category is sameas(catesub) and page.template != 'category' %}
+                                            <li>
+                                                <a href="{{ page.url }}">
+                                                    <time class="vtl_date meta" datetime="{{ page.date }}" ><span>{{ page.date|date("d/m/Y", "Europe/Paris")}}</span></time>
+                                                    <div class="vtl_point"><i class="fa"></i></div>
+                                                    <div class="vtl_label">
+                                                        {{ page.title }}
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </ul>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                
+                {% else %}
+                {% set cate = meta.title %}
+                <ul class="wlist supcateg">
+                {% for page in pages %}
+                    {% if page.category is sameas(cate) and page.template != 'category' %}
+                    <li>
+                        <a href="{{ page.url }}">
+                            <i class="fa"></i>
+                            {{ page.title }}
+                        </a>
+                    </li>
+                    {% elseif page.category is sameas(cate) and page.template == 'category' %}
+                        {% set catesub = page.title %}
+                        {% if catesub is not sameas(cate) %}
+                            <li>
+                                <a href="{{ page.url }}">
+                                    <i class="fa"></i>
+                                    {{ page.title }}
+                                </a>
+                                <ul class="wlist vtl">
+                                {% for page in pages %}
+                                    {% if page.category is sameas(catesub) and page.template != 'category' %}
+                                        <li>
+                                            <a href="{{ page.url }}">
+                                                <time class="vtl_date meta" datetime="{{ page.date }}" ><span>{{ page.date|date("d/m/Y", "Europe/Paris")}}</span></time>
+                                                <div class="vtl_point"><i class="fa"></i></div>
+                                                <div class="vtl_label">
+                                                    {{ page.title }}
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                </ul>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+
+            </article>
+       </section>
+    <!-- FOOTER -->
+    {% include 'includes/footer.html' %}
+</body>
+</html>

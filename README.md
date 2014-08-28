@@ -9,4 +9,5 @@ Thanks to:
 - [Maximilian Beck](http://glumb.de/) for hover links transition, colors, and inspiration
 - Jeremy Keith for his [non jQuery FitText.js](https://github.com/adactio/FitText.js)
 - [Brajeshwar](http://brajeshwar.github.io/paginate/) for the pagination style
+- Mary Lou / http://tympanus.net/codrops/2013/05/02/vertical-timeline/
 - ...

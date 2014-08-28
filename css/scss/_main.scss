@@ -485,3 +485,88 @@ article {
 		}
 	}
 } 
+
+ul.wlist, ul.wlist li {
+	list-style: none;
+	padding:0;
+}
+
+.vtl {
+	margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+
+  &:before {
+		background-color: #374641;
+	  bottom: 0;
+	  content: "";
+	  left: 5.4rem;
+	  position: absolute;
+	  top: 0;
+	  width: 0.15rem;
+	}
+	& > li {
+		position: relative;
+
+		& a:hover .vtl_point .fa:before {
+			content: "\f111";
+		}
+
+		& .vtl_date {
+			display: block;
+		  padding-right: 2rem;
+		  position: absolute;
+		  top: 0.2rem;
+		  width: 4rem;
+
+		  & span {
+				display: block;
+				font-size: 0.8rem;
+				font-style: italic;
+				text-align: right;
+			}
+		}
+
+		& .vtl_label {
+		  margin: 0 0 1rem 6rem;
+		  padding: 0rem 1rem 1rem;
+		  position: relative;
+		}
+
+		& .vtl_point {
+			color: #374641;
+		  font-size: 1rem;
+		  left: 5.05rem;
+		  position: absolute;
+		  top: 0;
+
+		  & .fa:before {
+				content: "\f10c";
+			}
+			& .fa:after {
+				content: "";
+			}
+		}
+	}
+}
+.supcateg > li {
+	margin-bottom: 2rem;
+	
+	&:last-child > ul{
+		margin-bottom: 6rem;
+	}
+	& .fa:before {
+		content: "\f10c";
+	}
+	& a:hover .fa {
+		color: $color_hbg;
+	}
+	& a:hover .fa:before {
+		content: "\f111";
+	}
+}
+
+.categ > li:last-child {
+	margin-bottom: 6rem;
+}
