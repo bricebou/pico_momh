@@ -313,7 +313,8 @@ article {
   padding-top: 1rem; }
   .pagination_article a {
     text-align: center;
-    display: block; }
+    display: block;
+    position: relative; }
     .pagination_article a.pa_older .pa_arrow {
       margin-left: 2%; }
     .pagination_article a.pa_older .pa_title {
@@ -336,6 +337,16 @@ article {
           display: inline-block;
           width: 100%;
           font-size: 0.7rem; }
+  .pagination_article .pa_older .pa_arrow {
+    margin-left: 2%;
+    transition: margin-left 1.2s ease 0.2s; }
+  .pagination_article .pa_recent .pa_arrow {
+    margin-right: 2%;
+    transition: margin-right 1.2s ease 0.2s; }
+  .pagination_article .pa_older:hover .pa_arrow {
+    margin-left: 10%; }
+  .pagination_article .pa_recent:hover .pa_arrow {
+    margin-right: 10%; }
 
 .syntaxhighlighter {
   padding: 0.5em 0; }

@@ -391,6 +391,7 @@ article {
 	& a {
 		text-align:center;
 		display: block;
+		position: relative;
 
 		&.pa_older {
 			& .pa_arrow {
@@ -411,6 +412,8 @@ article {
 		  &.pa_arrow {
 				font-size: 2rem;
 	    	width: 1.5rem;
+
+	    	
 			}
 			&.pa_title {
 				max-width: 75%;
@@ -426,6 +429,21 @@ article {
 			}
 		}
 		
+	}
+	& .pa_older .pa_arrow {
+		margin-left: 2%;
+		transition: margin-left 1.2s ease 0.2s;
+	}
+	& .pa_recent .pa_arrow {
+		margin-right: 2%;
+		transition: margin-right 1.2s ease 0.2s;
+	}
+	& .pa_older:hover .pa_arrow	{
+		
+		margin-left: 10%;
+	}
+	& .pa_recent:hover .pa_arrow {
+		margin-right: 10%;
 	}
 }
 
