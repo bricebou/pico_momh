@@ -337,16 +337,17 @@ article {
           display: inline-block;
           width: 100%;
           font-size: 0.7rem; }
-  .pagination_article .pa_older .pa_arrow {
-    margin-left: 2%;
-    transition: margin-left 1.2s ease 0.2s; }
-  .pagination_article .pa_recent .pa_arrow {
-    margin-right: 2%;
-    transition: margin-right 1.2s ease 0.2s; }
-  .pagination_article .pa_older:hover .pa_arrow {
-    margin-left: 10%; }
-  .pagination_article .pa_recent:hover .pa_arrow {
-    margin-right: 10%; }
+  @media only screen and (min-width: 700px) {
+    .pagination_article .pa_older .pa_arrow {
+      margin-left: 1rem;
+      transition: margin-left 0.8s ease 0.1s; }
+    .pagination_article .pa_recent .pa_arrow {
+      margin-right: 1rem;
+      transition: margin-right 0.8s ease 0.1s; }
+    .pagination_article .pa_older:hover .pa_arrow {
+      margin-left: 3rem; }
+    .pagination_article .pa_recent:hover .pa_arrow {
+      margin-right: 3rem; } }
 
 .syntaxhighlighter {
   padding: 0.5em 0; }

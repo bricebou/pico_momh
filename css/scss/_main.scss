@@ -430,21 +430,23 @@ article {
 		}
 		
 	}
-	& .pa_older .pa_arrow {
-		margin-left: 2%;
-		transition: margin-left 1.2s ease 0.2s;
-	}
-	& .pa_recent .pa_arrow {
-		margin-right: 2%;
-		transition: margin-right 1.2s ease 0.2s;
-	}
-	& .pa_older:hover .pa_arrow	{
-		
-		margin-left: 10%;
-	}
-	& .pa_recent:hover .pa_arrow {
-		margin-right: 10%;
-	}
+	@media only screen and (min-width: 700px) {
+		& .pa_older .pa_arrow {
+			margin-left: 1rem;
+			transition: margin-left 0.8s ease 0.1s;
+		}
+		& .pa_recent .pa_arrow {
+			margin-right: 1rem;
+			transition: margin-right 0.8s ease 0.1s;
+		}
+		& .pa_older:hover .pa_arrow	{
+			
+			margin-left: 3rem;
+		}
+		& .pa_recent:hover .pa_arrow {
+			margin-right: 3rem;
+		}
+	}	
 }
 
 // For Syntaxhighliter -- override shCore.css
