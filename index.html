@@ -48,7 +48,7 @@
                             le {{ meta.date|date("d/m/Y", "Europe/Paris") }} {% if meta.category %}dans {{ meta.category }} {% endif %}
                         </span>
                         <span class="tags_lsp">
-                            {% if meta.tags %}<i class="fa fa-tags"></i>{% for tag in meta.tags %}<a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
+                            {% if meta.tags %}<i class="fa fa-tags"></i>{% for tag in meta.tags %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
                         </span>
                     </p>
 
