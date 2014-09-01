@@ -210,24 +210,30 @@ footer {
   padding: 1rem 0;
   position: absolute;
   right: 0;
-  text-align: center;
   font-size: 0.8rem;
 	& .footer_content {
 		border-top: 1px solid $color_brd;
 
+		& p:first-child {
+			float: left;
+		}
+		& p:last-child {
+			float: right;
+			text-align: right;
+		}
+
 		@media only screen and (max-width: 700px) {
 			& p {
 		    margin: 0;
-		    width: 49%;
-		    text-align: left;
+		    // width: 49%;
 			}
 		}
 		@media only screen and (max-width: 400px) {
 			& p {
 			    margin: 0;
-			    float: none;
+			    float: none!important;
 			    width: 100%;
-			    text-align: left;
+			    text-align: left!important;
 			}
 		}
 	}
