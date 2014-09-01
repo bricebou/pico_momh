@@ -15,7 +15,7 @@
                 {% if meta.title == "Tutos" %}
                 {% set cate = meta.title %}
                 <ul class="wlist supcateg">
-                    {% for page in pages|reverse %}
+                    {% for page in pages|sort %}
                         {% if page.category is sameas(cate) and page.template != 'category' %}
                         <li>
                             <a href="{{ page.url }}">
@@ -55,7 +55,7 @@
                 {% else %}
                 {% set cate = meta.title %}
                 <ul class="wlist supcateg">
-                {% for page in pages %}
+                {% for page in pages|reverse|sort %}
                     {% if page.category is sameas(cate) and page.template != 'category' %}
                     <li>
                         <a href="{{ page.url }}">
