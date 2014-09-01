@@ -39,6 +39,13 @@
                     </ul>
                 </div>
             <!-- END front page -->
+            <!-- Error 404 page -->
+            {% elseif meta.title == "Error 404" %}
+                <article>
+                    {{ content }}
+                </article>
+            <!-- END Error 404 page -->
+            <!-- blog posts -->
             {% else %}
                 <article>
                     <h1>{{ meta.title }} </h1>
@@ -96,7 +103,7 @@
                     </div>
                  
                 </article>
-
+            <!-- END blog posts -->
             {% endif %}
 
 
