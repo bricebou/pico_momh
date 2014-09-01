@@ -38,14 +38,13 @@
                         <li>{{ next_page_link }}</li>
                     </ul>
                 </div>
-                
             <!-- END front page -->
             {% else %}
                 <article>
                     <h1>{{ meta.title }} </h1>
                     <p class="meta clearfix">
                         <span class="date_lsp">
-                            le {{ meta.date|date("d/m/Y", "Europe/Paris") }} {% if meta.category %}dans {{ meta.category }} {% endif %}
+                            {% if meta.date %}le {{ meta.date|date("d/m/Y", "Europe/Paris") }}{% endif %} {% if meta.category %}dans {{ meta.category }} {% endif %}
                         </span>
                         <span class="tags_lsp">
                             {% if meta.tags %}<i class="fa fa-tags"></i>{% for tag in meta.tags %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
