@@ -1,7 +1,7 @@
-Pico-momh (work in progress)
-============================
+Pico-momh
+=========
 
-A simple and basic theme for Pico CMS with a basic responsive support for my website [momh.fr](http://momh.fr/) [the theme is not on production for the moment].
+A simple and basic theme for Pico CMS with a basic responsive support for my website [momh.fr](http://momh.fr/).
 
 It will be extended gradually, accordingly to my needs.
 
@@ -16,12 +16,12 @@ For this project I use SASS for the first time, and very basically; no doubt tha
 - [Mary Lou](http://tympanus.net/codrops/2013/05/02/vertical-timeline/) for the vertical line used in my category and supra-category pages;
 - ...
 
-## Pico Plugins in use on [momh.fr/](http://momh.fr/)
+## Pico Plugins in use on momh.fr
 
 - [Pico Advanced Meta](https://github.com/shawnsandy/adv-meta/releases)
 - [Pico GAnalytics](https://github.com/bricebou/pico_ganalytics)
 - [Pico Leaflet](https://github.com/bricebou/pico_leaflet)
-- [Pico Pagination](https://github.com/rewdy/Pico-Pagination)
+- [Pico Pagination](https://github.com/bricebou/Pico-Pagination) forked from [rewdy](https://github.com/rewdy/Pico-Pagination)
 - [Pico Piwik](https://github.com/bricebou/pico_piwik)
 - [Pico Sitemap](https://github.com/Techn0tic/Pico_Sitemap)
 - [Pico SyntaxHighlighter](https://github.com/bricebou/pico_SyntaxHighlighter)
