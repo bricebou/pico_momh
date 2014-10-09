@@ -63,6 +63,9 @@ body {
   min-height: 100%;
   background-color: #fff; }
 
+img {
+  max-width: 100%; }
+
 .inner {
   max-width: 740px;
   margin: auto;
@@ -191,6 +194,7 @@ code {
 footer {
   bottom: 0;
   height: 2rem;
+  margin-bottom: 0;
   left: 0;
   padding: 1rem 0;
   position: absolute;
