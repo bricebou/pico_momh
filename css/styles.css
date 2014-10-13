@@ -94,6 +94,16 @@ a:visited {
   a:visited.hvr_over:active {
     text-decoration: overline; }
 
+article p a[href^="http"]:before {
+  font-family: "FontAwesome";
+  content: "\f08e\00A0";
+  font-size: 0.8rem; }
+
+article p a[href^="http://localhost"]:before,
+article p a[href^="http://momh.fr"]:before {
+  font-family: "FontAwesome";
+  content: ""; }
+
 span.email {
   direction: rtl;
   unicode-bidi: bidi-override; }
