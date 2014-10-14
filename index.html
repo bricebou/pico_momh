@@ -57,8 +57,9 @@
                             {% if meta.tags %}<i class="fa fa-tags"></i>{% for tag in meta.tags %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
                         </span>
                     </p>
-
-                    {{ content }}
+                    <div class="article">
+                        {{ content }}
+                    </div>  
 
                 {% if meta.coordinates %}
                     <p>Coordonnées :</p>

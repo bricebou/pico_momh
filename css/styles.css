@@ -94,13 +94,13 @@ a:visited {
   a:visited.hvr_over:active {
     text-decoration: overline; }
 
-article p a[href^="http"]:before {
+.article a[href^="http"]:before {
   font-family: "FontAwesome";
-  content: "\f08e\00A0";
+  content: "\00A0\f08e\00A0";
   font-size: 0.8rem; }
 
-article p a[href^="http://localhost"]:before,
-article p a[href^="http://momh.fr"]:before {
+.article a[href^="http://localhost"]:before,
+.article a[href^="http://momh.fr"]:before {
   font-family: "FontAwesome";
   content: ""; }
 
