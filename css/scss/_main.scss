@@ -60,7 +60,8 @@ a:visited {
 }
 
 .article a[href^="http://localhost"]:before,
-.article a[href^="http://momh.fr"]:before { 
+.article a[href^="http://momh.fr"]:before,
+.article .syntaxhighlighter a[href^="http"]:before { 
 	font-family: "FontAwesome";
 	content: "";
 }
