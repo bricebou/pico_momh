@@ -30,9 +30,9 @@
                         <li>{{ prev_page_link }}</li>
                         {% for i in 1..total_pages %}
                             {% if i == page_number %}
-                                <li class="pi pi_a"><a href="/page/{{ i }}" class="page_item page_active"><i class="fa fa-clock-o"></i><span>{{ i }}</span></a></li>
+                                <li class="pi pi_a"><a href="{{ base_url }}/page/{{ i }}" class="page_item page_active"><i class="fa fa-clock-o"></i><span>{{ i }}</span></a></li>
                             {% else %}
-                                <li class="pi"><a href="/page/{{ i }}" class="page_item">{{ i }}</a></li>
+                                <li class="pi"><a href="{{ base_url }}/page/{{ i }}" class="page_item">{{ i }}</a></li>
                             {% endif %}
                         {% endfor %}
                         <li>{{ next_page_link }}</li>

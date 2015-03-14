@@ -32,7 +32,7 @@
                 <h1><i class="fa fa-tags"></i>Tous les tags</h1>
                 <ul class="tags_list">
                     {% for tag in tag_list %}
-                        <li><a href="/tag/{{ tag }}">#{{ tag }}</a></li>
+                        <li><a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
             </article>
