@@ -7,6 +7,11 @@ It will be extended gradually, accordingly to my needs.
 
 For this project I use SASS for the first time, and very basically; no doubt that I can improve myself in its use  and still discover a lot.
 
+## Content structure
+
+You can check how the contents are organized on my website on my [momh_content
+ repository](https://github.com/bricebou/momh_content).
+
 ## Thanks to:
 
 - Dan Reeves ([Website](http://danreev.es/) / [Github](https://github.com/DanReeves)) for the nav bar and the use of the Awesome font;
