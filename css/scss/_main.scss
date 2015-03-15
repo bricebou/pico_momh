@@ -162,6 +162,7 @@ code {
 					    width: 100%;
 					    text-align: left;
 					    line-height: inherit;
+					    padding: 8px 0; /* GWT : tap */
 					  }
 
 			    &:hover {
@@ -249,7 +250,7 @@ footer {
 		}
 		@media only screen and (max-width: 400px) {
 			& p {
-			    margin: 0;
+			    margin: 12px 0;
 			    float: none!important;
 			    width: 100%;
 			    text-align: left!important;
@@ -293,11 +294,18 @@ article {
 		@media only screen and (max-width: 700px) {
 			& span.date_lsp,
 			& span.tags_lsp {
-					display: inline-block;
-			    margin: 0;
-			    float: none;
-			    width: 100%;
-			    text-align: left;
+				display: inline-block;
+		    margin: 0;
+		    float: none;
+		    width: 100%;
+		    text-align: left;
+
+			  a {
+			  	/* GWT : tap */
+			  	display: inline-block;
+			    height: 20px;
+			    padding: 8px;
+			  } 
 			}
 		}
 	}
