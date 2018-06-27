@@ -5,13 +5,13 @@
 
 {% if meta.description %}<meta name="description" content="{{ meta.description }}">{% endif %}
 
-{% if meta.robots %}<meta name="robots" content="{{ meta.robots }}">{% endif %}
+{% if meta["Robots"] %}<meta name="robots" content="{{ meta["Robots"] }}">{% endif %}
 
 {% if meta.author %}<meta name="author" content="{{ meta.author }}">{% endif %}
 
-{% if meta.license %}<meta name="license" content="{{ meta.license }}">{% endif %}
+{% if meta["License"] %}<meta name="license" content="{{ meta["License"] }}">{% endif %}
 
-{% if meta.tags %}<meta name="keywords" content="{{ meta.tags | join(',') }}">{% endif %}
+{% if meta["Tags"] %}<meta name="keywords" content="{{ meta["Tags"] | join(',') }}">{% endif %}
 
 <!-- Normalize CSS -->
 <link rel="stylesheet" href="{{ theme_url }}/css/normalize.min.css" type="text/css" />

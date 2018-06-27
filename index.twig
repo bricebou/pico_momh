@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr" class="no-js">
 <head>
-    {% include 'includes/head.html' %}
+    {% include 'includes/head.twig' %}
 </head>
 <body>
-    {% include 'includes/header.html' %}
+    {% include 'includes/header.twig' %}
 
     <section id="content">
         <div class="inner">
             {% if is_front_page %}
+
+                TRUe <br>
             <!-- front page -->
                 {% for page in paged_pages %}
                     <article class="post">
@@ -51,10 +53,10 @@
                     <h1>{{ meta.title }} </h1>
                     <p class="meta clearfix">
                         <span class="date_lsp">
-                            {% if meta.date %}le {{ meta.date|date("d/m/Y", "Europe/Paris") }}{% endif %} {% if meta.category %}dans {{ meta.category }} {% endif %}
+                            {% if meta.date %}le {{ meta.date|date("d/m/Y", "Europe/Paris") }}{% endif %} {% if meta["Category"] %}dans {{ meta["Category"] }} {% endif %}
                         </span>
                         <span class="tags_lsp">
-                            {% if meta.tags %}<i class="fa fa-tags"></i>{% for tag in meta.tags %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
+                            {% if meta["Tags"] %}<i class="fa fa-tags"></i>{% for tag in meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
                         </span>
                     </p>
                     <div class="article">
@@ -112,7 +114,7 @@
     </section>
     
     <!-- FOOTER -->
-    {% include 'includes/footer.html' %}
+    {% include 'includes/footer.twig' %}
 
 
 </body>

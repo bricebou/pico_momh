@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr" class="no-js">
 <head>
-    {% include 'includes/head.html' %}
+    {% include 'includes/head.twig' %}
 </head>
 <body>
-    {% include 'includes/header.html' %}
+    {% include 'includes/header.twig' %}
 
     <section id="content">
         <div class="inner">
             <article>
 
                 <h1>{{ meta.title }}</h1>
-                {% set cate = meta.title %}
+                {% set cate = meta.title|trim %}
+
                 <ul class="wlist vtl categ">
                     {% for page in pages %}
-                        {% if page.category is sameas(cate) and page.template != 'category' %}
+                        {% if page.meta["Category"]|trim is sameas(cate) and page.meta["template"]|trim != 'category' %}
                             <li>
                                 <a href="{{ page.url }}">
                                     <time class="vtl_date meta" datetime="{{ page.date }}" ><span>{{ page.date|date("d/m/Y", "Europe/Paris")}}</span></time>
@@ -30,6 +31,6 @@
             </article>
        </section>
     <!-- FOOTER -->
-    {% include 'includes/footer.html' %}
+    {% include 'includes/footer.twig' %}
 </body>
 </html>

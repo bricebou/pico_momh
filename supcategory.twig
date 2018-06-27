@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr" class="no-js">
 <head>
-    {% include 'includes/head.html' %}
+    {% include 'includes/head.twig' %}
 </head>
 <body>
-    {% include 'includes/header.html' %}
+    {% include 'includes/header.twig' %}
 
     <section id="content">
         <div class="inner">
             <article>
                 <h1>{{ meta.title }}</h1>
                 
-
                 {% if meta.title == "Tutos" %}
-                {% set cate = meta.title %}
+                {% set cate = meta.title|trim %}
                 <ul class="wlist supcateg">
                     {% for page in pages|sort %}
-                        {% if page.category is sameas(cate) and page.template != 'category' %}
+                        {% if page.meta["Category"]|trim is sameas(cate) and page.meta["template"]|trim != 'Category' %}
                         <li>
                             <a href="{{ page.url }}">
                                 <i class="fa"></i>
                                 {{ page.title }}
                             </a>
                         </li>
-                        {% elseif page.category is sameas(cate) and page.template == 'category' %}
-                            {% set catesub = page.title %}
+                        {% elseif page.meta["Category"]|trim is sameas(cate) and page.meta["template"]|trim == 'category' %}
+                            {% set catesub = page.title|trim %}
                             {% if catesub is not sameas(cate) %}
                                 <li>
                                     <a href="{{ page.url }}">
@@ -33,7 +32,7 @@
                                     </a>
                                     <ul class="wlist vtl">
                                     {% for page in pages %}
-                                        {% if page.category is sameas(catesub) and page.template != 'category' %}
+                                        {% if page.meta["Category"]|trim is sameas(catesub) and page.meta["template"]|trim != 'category' %}
                                             <li>
                                                 <a href="{{ page.url }}">
                                                     <time class="vtl_date meta" datetime="{{ page.date }}" ><span>{{ page.date|date("d/m/Y", "Europe/Paris")}}</span></time>
@@ -53,18 +52,18 @@
 
                 
                 {% else %}
-                {% set cate = meta.title %}
+                {% set cate = meta.title|trim %}
                 <ul class="wlist supcateg">
-                {% for page in pages|reverse|sort %}
-                    {% if page.category is sameas(cate) and page.template != 'category' %}
+                {% for page in pages|sort|reverse %}
+                    {% if page.meta["Category"]|trim is sameas(cate) and page.meta["template"]|trim != 'category' %}
                     <li>
                         <a href="{{ page.url }}">
                             <i class="fa"></i>
                             {{ page.title }}
                         </a>
                     </li>
-                    {% elseif page.category is sameas(cate) and page.template == 'category' %}
-                        {% set catesub = page.title %}
+                    {% elseif page.meta["Category"]|trim is sameas(cate) and page.meta["template"]|trim == 'category' %}
+                        {% set catesub = page.title|trim %}
                         {% if catesub is not sameas(cate) %}
                             <li>
                                 <a href="{{ page.url }}">
@@ -73,7 +72,7 @@
                                 </a>
                                 <ul class="wlist vtl">
                                 {% for page in pages %}
-                                    {% if page.category is sameas(catesub) and page.template != 'category' %}
+                                    {% if page.meta["Category"]|trim is sameas(catesub) and page.meta["template"]|trim != 'category' %}
                                         <li>
                                             <a href="{{ page.url }}">
                                                 <time class="vtl_date meta" datetime="{{ page.date }}" ><span>{{ page.date|date("d/m/Y", "Europe/Paris")}}</span></time>
@@ -96,6 +95,6 @@
             </article>
        </section>
     <!-- FOOTER -->
-    {% include 'includes/footer.html' %}
+    {% include 'includes/footer.twig' %}
 </body>
 </html>

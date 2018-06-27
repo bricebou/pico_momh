@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr" class="no-js">
 <head>
-    {% include 'includes/head.html' %}
+    {% include 'includes/head.twig' %}
 </head>
 <body>
-    {% include 'includes/header.html' %}
+    {% include 'includes/header.twig' %}
 
     <section id="content">
-        <div class="inner">         
+        <div class="inner">        
 
             <h1><i class="fa fa-tag"></i><a href="{{ page.url }}">#{{ current_tag }}</a></h1>
             {% for page in pages %}          
@@ -15,13 +15,13 @@
                 <h2 class="h1"><a href="{{ page.url }}">{{ page.title }}</a></h2>
                 <p class="meta clearfix">
                     <span class="date_lsp">
-                        le {{ page.date|date("d/m/Y", "Europe/Paris") }} dans {{ page.category }}
+                        le {{ page.date|date("d/m/Y", "Europe/Paris") }} dans {{ page.meta["Category"] }}
                     </span>
                     <span class="tags_lsp">
-                        {% if page.tags %}<i class="fa fa-tags"></i>{% for tag in page.tags %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
+                        {% if page.meta["Tags"] %}<i class="fa fa-tags"></i>{% for tag in page.meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
                     </span>
                 </p>
-                {{ page.excerpt }}
+                {{ page.description }}
             </article>
             {% endfor %}
         </div>
@@ -39,7 +39,7 @@
         </div> <!-- END .inner -->
     </section>
     <!-- FOOTER -->
-    {% include 'includes/footer.html' %}
+    {% include 'includes/footer.twig' %}
 
    
 </body>
