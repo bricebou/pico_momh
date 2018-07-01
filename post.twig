@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+    {% include 'includes/head.twig' %}
+</head>
+<body>
+  {% include 'includes/header.twig' %}
+
+  <section id="content">
+    <div class="inner">
+      <article>
+        <h1>{{ meta.title }} </h1>
+        <p class="meta clearfix">
+            <span class="date_lsp">
+                {% if meta.date %}le {{ meta.date|date("d/m/Y", "Europe/Paris") }}{% endif %} {% if meta["Category"] %}dans {{ meta["Category"] }} {% endif %}
+            </span>
+            {% if meta["Tags"][0] != "" %}
+              <span class="tags_lsp">
+                <i class="fa fa-tags"></i>{% for tag in meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}
+              </span>
+            {% endif %}
+        </p>
+        <div class="article">
+            {{ content }}
+        </div>  
+      </article>
+    </div> {# END .inner #}
+  </section> {# END #content #}
+
+  <!-- FOOTER -->
+  {% include 'includes/footer.twig' %}
+
+</body>
+</html>

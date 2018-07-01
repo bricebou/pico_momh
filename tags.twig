@@ -4,42 +4,64 @@
     {% include 'includes/head.twig' %}
 </head>
 <body>
-    {% include 'includes/header.twig' %}
+  {% include 'includes/header.twig' %}
 
-    <section id="content">
-        <div class="inner">        
+  <section id="content">
+    <div class="inner">  
+    
+      {% set pagi_slice_length = 5 %}
+      {% set pagi_pages_array = tag_pages %}
+      {% set pagi_base_url = base_url ~ "/tag/" ~ current_tag %}
+      {% set pagi_http_param = 'page' %}
+      
+      {% if url_param(pagi_http_param, 'int') is not null %}
+        {% set pagi_basepage = url_param(pagi_http_param, 'int') %}
+        {% set pagi_slice_start = pagi_slice_length * (pagi_basepage - 1) %}
+      {% else %}
+        {% set pagi_slice_start = 0 %}
+        {% set pagi_basepage = 1 %}
+      {% endif %}
+      
+      {% set pagi_maxpage = (pagi_pages_array|length / pagi_slice_length)|round(0, 'ceil') %}
+      
+          
+      <h1><i class="fa fa-tag"></i><a href="{{ page.url }}">#{{ current_tag }}</a></h1>
 
-            <h1><i class="fa fa-tag"></i><a href="{{ page.url }}">#{{ current_tag }}</a></h1>
-            {% for page in pages %}          
-            <article>
-                <h2 class="h1"><a href="{{ page.url }}">{{ page.title }}</a></h2>
-                <p class="meta clearfix">
-                    <span class="date_lsp">
-                        le {{ page.date|date("d/m/Y", "Europe/Paris") }} dans {{ page.meta["Category"] }}
-                    </span>
-                    <span class="tags_lsp">
-                        {% if page.meta["Tags"] %}<i class="fa fa-tags"></i>{% for tag in page.meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
-                    </span>
-                </p>
-                {{ page.description }}
-            </article>
+      {% for page in tag_pages|slice(pagi_slice_start, pagi_slice_length, preserve_keys) %}      
+        <article>
+          <h2 class="h1"><a href="{{ page.url }}">{{ page.title }}</a></h2>
+          <p class="meta clearfix">
+            <span class="date_lsp">
+                le {{ page.date|date("d/m/Y", "Europe/Paris") }} dans {{ page.meta["Category"] }}
+            </span>
+            <span class="tags_lsp">
+                {% if page.meta["Tags"] %}<i class="fa fa-tags"></i>{% for tag in page.meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
+            </span>
+          </p>
+         
+          {% set morelink = '&hellip;<br><a class="lire_plus" title="' ~ page.title ~ '" href="' ~ page.url ~ '">Lire plus</a>' %}
+          <p>{{ page.id|content|excerpt(200, morelink) }}</p>
+        </article>
+      {% endfor %}
+
+      {% include 'includes/pagination.twig' with [pagi_basepage, pagi_maxpage, pagi_base_url, pagi_http_param] %}
+
+    </div>
+  </section>
+  <section>
+    <div class="inner">
+      <article>
+        <h1><i class="fa fa-tags"></i>Tous les tags</h1>
+        <ul class="tags_list">
+            {% for tag in tag_list %}
+                <li><a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a></li>
             {% endfor %}
-        </div>
-    </section>
-    <section>
-        <div class="inner">
-            <article>
-                <h1><i class="fa fa-tags"></i>Tous les tags</h1>
-                <ul class="tags_list">
-                    {% for tag in tag_list %}
-                        <li><a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a></li>
-                    {% endfor %}
-                </ul>
-            </article>
-        </div> <!-- END .inner -->
-    </section>
-    <!-- FOOTER -->
-    {% include 'includes/footer.twig' %}
+        </ul>
+      </article>
+    </div> <!-- END .inner -->
+  </section>
+  <!-- FOOTER -->
+  {% include 'includes/footer.twig' %}
 
    
 </body>

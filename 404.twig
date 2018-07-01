@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+    {% include 'includes/head.twig' %}
+</head>
+<body>
+  {% include 'includes/header.twig' %}
+
+  <section id="content">
+    <div class="inner">
+
+      <article>
+        <h1>{{ meta.title }} </h1>
+
+        {{ content }}
+
+        <h2>Accédez à ce que vous recherchiez via les tags ?</h2>
+
+        <ul class="tags_list">
+          {% for tag in tag_list %}
+            <li><a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a></li>
+          {% endfor %}
+        </ul>
+      </article>
+
+    </div> {# END .inner #}
+  </section> {# END #content #}
+
+  <!-- FOOTER -->
+  {% include 'includes/footer.twig' %}
+</body>
+</html>

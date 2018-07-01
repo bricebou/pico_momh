@@ -4,10 +4,62 @@
     {% include 'includes/head.twig' %}
 </head>
 <body>
-    {% include 'includes/header.twig' %}
+  {% include 'includes/header.twig' %}
 
-    <section id="content">
-        <div class="inner">
+  <section id="content">
+    <div class="inner">
+
+      {% set excludedpages = 0 %}
+      {% set pagesbis = [] %}
+      {% for page in pages %}
+        {% if page.meta["template"] == "category" or page.meta["template"] == "supcategory" or page.title == "Blog" %}
+          {% set excludedpages = excludedpages + 1 %}
+        {% else %}
+          {% set pagesbis = pagesbis|merge([page]) %}
+        {% endif %}
+      {% endfor %}
+
+      {% set pagi_slice_length = 5 %}
+      {% set pagi_pages_array = pagesbis %}
+      {% set pagi_base_url = base_url %}
+      {% set pagi_http_param = 'page' %}
+      
+      {% if url_param(pagi_http_param, 'int') is not null %}
+        {% set pagi_basepage = url_param(pagi_http_param, 'int') %}
+        {% set pagi_slice_start = pagi_slice_length * (pagi_basepage - 1) %}
+      {% else %}
+        {% set pagi_slice_start = 0 %}
+        {% set pagi_basepage = 1 %}
+      {% endif %}      
+
+      {% set pagi_maxpage = (pagi_pages_array|length / pagi_slice_length)|round(0, 'ceil') %}  
+    
+      {% for page in pagesbis|slice(pagi_slice_start, pagi_slice_length, preserve_keys) %}
+        <article class="post">
+          <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+            <p class="meta clearfix">
+              <span class="date_lsp">
+                le {{ page.date|date("d/m/Y", "Europe/Paris") }} {% if page.meta["Category"] %}dans {{ page.meta["Category"] }} {% endif %}
+              </span>
+              {% if page.meta["Tags"] %}
+                <span class="tags_lsp">
+                  <i class="fa fa-tags"></i>{% for tag in page.meta["Tags"]|split(',') %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}
+                </span>
+              {% endif %} 
+            </p>
+            
+            {% set morelink = '&hellip;<br><a class="lire_plus" title="' ~ page.title ~ '" href="' ~ page.url ~ '">Lire plus</a>' %}
+            <p>{{ page.id|content|excerpt(200, morelink) }}</p>
+        </article>
+      {% endfor %}
+
+      {% include 'includes/pagination.twig' with [pagi_basepage, pagi_maxpage, pagi_base_url, pagi_http_param] %}
+
+    </div> {# END .inner #}
+  </section> {# END #content #}
+            
+{# 
+
             {% if is_front_page %}
 
                 TRUe <br>
@@ -49,6 +101,10 @@
             <!-- END Error 404 page -->
             <!-- blog posts -->
             {% else %}
+
+                
+
+
                 <article>
                     <h1>{{ meta.title }} </h1>
                     <p class="meta clearfix">
@@ -107,11 +163,11 @@
                  
                 </article>
             <!-- END blog posts -->
-            {% endif %}
+            {% endif %} #}
 
 
-        </div> <!-- END .inner -->
-    </section>
+{#         </div> <!-- END .inner -->
+    </section> #}
     
     <!-- FOOTER -->
     {% include 'includes/footer.twig' %}
