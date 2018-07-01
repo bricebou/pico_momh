@@ -15,7 +15,7 @@
         {% set cate = meta.title|trim %}
         <ul class="wlist supcateg">
           {% for page in pages|sort %}
-            {% if page.meta["Category"]|trim is sameas(cate) and page.meta["template"]|trim != 'Category' %}
+            {% if page.meta["Category"]|trim is sameas(cate) and page.meta["template"]|trim != 'category' %}
             <li>
               <a href="{{ page.url }}">
                 <i class="fa"></i>
