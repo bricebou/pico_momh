@@ -554,7 +554,7 @@ ul.wlist, ul.wlist li {
 		background-color: #374641;
 	  bottom: 0;
 	  content: "";
-	  left: 5.4rem;
+	  left: 6rem;
 	  position: absolute;
 	  top: 0;
 	  width: 0.15rem;
@@ -562,18 +562,18 @@ ul.wlist, ul.wlist li {
 	& > li {
 		position: relative;
 
-		& a:hover .vtl_point .fa:before {
+		&:hover .vtl_point .fa:before {
 			content: "\f111";
 		}
 
 		& .vtl_date {
 			display: block;
-		  padding-right: 2rem;
-		  position: absolute;
-		  top: 0.2rem;
-		  width: 4rem;
+			padding-right: 2rem;
+			position: absolute;
+			top: 0.2rem;
+			width: 4.75rem;
 
-		  & span {
+			& span {
 				display: block;
 				font-size: 0.8rem;
 				font-style: italic;
@@ -582,15 +582,25 @@ ul.wlist, ul.wlist li {
 		}
 
 		& .vtl_label {
-		  margin: 0 0 1rem 6rem;
+		  margin: 0 0 1rem 6.5rem;
 		  padding: 0rem 1rem 1rem;
 		  position: relative;
+
+          .poste_intit {
+          	font-weight: bold;
+          }
+          .poste_lieu {
+
+          	&::before {
+          		content: ", ";
+          	}
+          }
 		}
 
 		& .vtl_point {
 			color: #374641;
 		  font-size: 1rem;
-		  left: 5.05rem;
+		  left: 5.65rem;
 		  position: absolute;
 		  top: 0;
 
