@@ -39,8 +39,8 @@
             </span>
           </p>
          
-          {% set morelink = '&hellip;<br><a class="lire_plus" title="' ~ page.title ~ '" href="' ~ page.url ~ '">Lire plus</a>' %}
-          <p>{{ page.id|content|excerpt(200, morelink) }}</p>
+          {# {% set morelink = '&hellip;<br><a class="lire_plus" title="' ~ page.title ~ '" href="' ~ page.url ~ '">Lire plus</a>' %} #}
+          <p>{{ page.id|content|excerpt(200) }}</p>
         </article>
       {% endfor %}
 
