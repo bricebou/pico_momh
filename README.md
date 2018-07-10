@@ -1,4 +1,4 @@
-Pico-momh
+pico-momh
 =========
 
 A simple and basic theme for Pico CMS with a basic responsive support for my website [momh.fr](http://momh.fr/).
@@ -21,7 +21,7 @@ You can check how the contents are organized on my website on my [momh_content
 - [Mary Lou](http://tympanus.net/codrops/2013/05/02/vertical-timeline/) for the vertical line used in my category and supra-category pages;
 - ...
 
-## Pico Plugins in use on momh.fr
+## Pico plugins in use on _momh.fr_
 
 - [PicoTags](https://github.com/bricebou/PicoTags);
 - [PicoSyntaxHighlighter](https://github.com/bricebou/PicoSyntaxHighlighter);
