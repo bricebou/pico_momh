@@ -1,0 +1,85 @@
+/***************************************
+*************** COLORS *****************
+***************************************/
+
+$color_bg: #fff;
+$color_txt: #151515;
+
+$color_1: #FABC09;
+$color_2: #A57341;
+$color_3: #25BEA0;
+$color_4: #2D3F4A;
+
+/***************************************
+*************** LAYOUT *****************
+***************************************/
+$width_max: 740px;
+$inner_pad: 20px;
+
+/***************************************
+************* TYPOGRAPHY ***************
+***************************************/
+
+$font_basesize: 13px;
+$font_text: 'Open Sans';
+$font_title: 'Open Sans Condensed';
+
+html {
+  font-family: $font_text;
+  font-size: $font_basesize;
+  line-height: 1.45;
+
+  @media only screen and (max-width: 499px) {
+    & {
+      font-size: $font_basesize;
+    }
+  }
+  @media only screen and (min-width: 500px) {
+    & {
+      font-size: $font_basesize;
+    }
+  }
+  @media only screen and (min-width: 600px) {
+    & {
+      font-size: $font_basesize + 4;
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font_title;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 300;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+h4 {
+  font-size: 1.2rem;
+  font-variant: small-caps;
+  font-weight: 300;
+}
+
+// Awesome font
+
+.fa {
+  text-decoration: none;
+  &:before {
+    display: inline!important;
+  }
+  &:after {
+    content: "\0000a0\0000a0";
+  }
+}

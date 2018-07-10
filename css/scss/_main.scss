@@ -1,3 +1,6 @@
+/**************************************************
+********************** GENERAL ********************
+**************************************************/
 html {
   height: 100%;
 }
@@ -20,56 +23,13 @@ img {
 	padding: 0 $inner_pad;
 }
 
-// clear
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 .clearfix:after {
-    clear: both;
-}
-
-// Links
-a,
-a:visited {
-	text-decoration: none;
-	color: $color_a;
-	transition: all 0.2s linear 0s;
-
-	&:hover,
-	&:active {
-		color: $color_hvr;
-	}
-	
-	// &.hvr_under:hover,
-	// &.hvr_under:active {
-	// 	text-decoration: underline;
-	// }
-
-	&.hvr_over:hover,
-	&.hvr_over:active {
-		text-decoration: overline;
-	}
-}
-
-.article a[href^="http"]:before {
-	font-family: "FontAwesome";
-	content: "\00A0\f08e\00A0";
-	font-size: 0.8rem;
-}
-
-.article a[href^="http://localhost"]:before,
-.article a[href^="http://momh.fr"]:before,
-.article .syntaxhighlighter a[href^="http"]:before { 
-	font-family: "FontAwesome";
-	content: "";
-}
-
-// Mail
-span.email {
-	direction: rtl;
-  unicode-bidi: bidi-override;
+  clear: both;
 }
 
 code {
@@ -78,148 +38,217 @@ code {
   font-family: Courier,"Courier New",Monaco,Tahoma;
   padding: 0 2px;
 }
+// For Syntaxhighliter -- override shCore.css
+.syntaxhighlighter {
+  padding: 0.5em 0;
 
-#header {
-	margin-bottom: 3em;
+  & > table > tbody > tr > td > div {
+    font-size: 0.8rem!important;
+
+    & > div > code {
+      font-size: 0.8rem!important;
+    }
+  }
+}
+
+/**************************************************
+************************ LINKS ********************
+**************************************************/
+
+a,
+a:visited {
+  text-decoration: none;
+  color: $color_2;
+  transition: color 0.3s linear;
+}
+
+a:focus,
+a:hover {
+  color: $color_3;
+}
+
+a.hvr_over {
+  text-decoration: none;
+	color: $color_4;
+  transition: text-decoration 0.2s linear, color 0.2s linear;
+	&:hover,
+	&:active {
+		color: $color_2;
+		text-decoration: overline;
+	}
+}
+
+.article a[href^="http"]:before {
+  font-family: "FontAwesome";
+  content: "\00A0\f08e\00A0";
+  font-size: 0.8rem;
+}
+
+.article a[href^="http://localhost"]:before,
+.article a[href^="http://momh.fr"]:before,
+.article .syntaxhighlighter a[href^="http"]:before { 
+  font-family: "FontAwesome";
+  content: "";
+}
+
+// Mail
+span.email {
+	direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+/**************************************************
+******************** HEADER & NAV *****************
+**************************************************/
+
+header {
+  margin-bottom: 3em;
   padding: 0 0 1em;
- 	background-color: $color_hbg;
+  background-color: $color_1;
 
-	& h1#site_title {
-		font-size: 2rem;
-		font-family: $font_title;
-		font-weight: 600;
-		text-align: center;
-		margin-bottom: 2rem;
+  h1#site_title {
+    font-size: 2rem;
+    font-family: $font_title;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 2rem;
     margin-top: 1rem;
-	}
+    text-transform: lowercase;
+    font-style: italic;
 
-	& a, & a:visited {
-		color: $color_ha;
-	}
-	& a:hover, & a:active {
-		color: $color_hvr;
-	}
-	
-	nav, nav ul {
-	    display: block;
-	    margin: 0;
-	    width: 100%;	    
-	}
-	nav {
-    // border-bottom: 1px solid #eaeaea;
-    // padding: 5px 0 2em;
+    a,
+    a:visited {
+      color: $color_bg;
+      transitio: color 0.2s linear;
+    }
 
+    a:focus,
+    a:hover {
+      color: $color_4;
+    }
+  }
+
+  nav, nav ul {
+      display: block;
+      margin: 0;
+      width: 100%;      
+  }
+  nav {
     & ul {
-	    padding: 0;
-	    float: left;
-	    position: relative;
-		}
+      padding: 0;
+      float: left;
+      position: relative;
+    }
 
-		& > ul {
-			text-align: right;
+    & > ul {
+      text-align: right;
 
-			& > li {
-				color: $color_ha;
-				line-height: 1.1;
+      & > li {
+        color: $color_4;
+        line-height: 1.1;
+        text-transform: uppercase;
+        font-size: 0.9rem;
 
-				
+        & a, & a:hover, & a:visited, & a:active {
+          color: unset;
+          text-decoration: none;
+        }
+        &:hover {
+          border-top: 1px solid $color_3;
+          color: $color_3;
 
-				& a, & a:hover, & a:visited, & a:active {
-					color: unset;
-					text-decoration: none;
-				}
-				&:hover {
-		    	// text-decoration: overline;
-		    	border-top: 1px solid $color_hvr;
-		    	color: $color_hvr;
+          & > ul {
+            display: block;
+          }
+          &:last-of-type:hover > ul {
+            text-align: right;
+          }
+        }
 
-		    	& > ul {
-						display: block;
-			    }
-			    &:last-of-type:hover > ul {
-						text-align: right;
-			    }
-	    	}
+        @media only screen and (max-width: 700px) {
+          & {
+            margin: 0;
+            width: 49%;
+            text-align: left;
+            line-height: inherit;
+          }
 
-	    	@media only screen and (max-width: 700px) {
-					& {
-				    margin: 0;
-				    width: 49%;
-				    text-align: left;
-				    line-height: inherit;
-				  }
+          &:hover {
+            border: none;
+            ul {
+              display: none;
+            }
+          }
+        }
+        @media only screen and (max-width: 400px) {
+          & {
+              margin: 0;
+              width: 100%;
+              text-align: left;
+              line-height: inherit;
+              padding: 8px 0; /* GWT : tap */
+            }
 
-			    &:hover {
-						border: none;
-				    ul {
-							display: none;
-						}
-			    }
-				}
-				@media only screen and (max-width: 400px) {
-					& {
-					    margin: 0;
-					    width: 100%;
-					    text-align: left;
-					    line-height: inherit;
-					    padding: 8px 0; /* GWT : tap */
-					  }
+          &:hover {
+            border: none;
+            ul {
+              display: none;
+            }
+          }
+        }
+      }
+    }
 
-			    &:hover {
-						border: none;
-				    ul {
-							display: none;
-						}
-			    }
-				}
-			}
-		}
-
-		& li {
-	    display: inline-block;
-	    list-style-type: none;
-	    margin-right: 1em;
-	    text-align: center;
-	    width: auto;
+    & li {
+      display: inline-block;
+      list-style-type: none;
+      margin-right: 1em;
+      text-align: center;
+      width: auto;
 
 
-	    &:last-of-type {
-	    	margin-right: 0;
-	    }
+      &:last-of-type {
+        margin-right: 0;
+      }
 
-	    & > ul {
-	    	display: none;
-		    float: none;
-		    left: 0;
-		    position: absolute;
-		    text-align: center;
-		    padding: 1.4em 0 1em;
-		    color: $color_ha;
+      & > ul {
+        display: none;
+        float: none;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        padding: 1.4em 0 1em;
+        color: $color_4;
 
-				& a, & a:visited {
-		    		color: $color_a;
-	    	}
-	    	& a:active, & a:hover {
-	    		color: $color_hvr;
-	    		text-decoration: underline;
-	    	}
+        & a, & a:visited {
+            color: $color_2;
+        }
+        & a:active, & a:hover {
+          color: $color_3;
+          text-decoration: underline;
+        }
 
-	    	& > li {
-	    		width: auto;
-	    		margin-right: 0;
+        & > li {
+          width: auto;
+          margin-right: 0;
+          text-transform: initial;
+          font-size: 1rem;
 
-	    		&:before {
-		    		content: " / ";
-		    	}
-		    	&:last-of-type:after {
-		    		content: " /";
-		    	}
-	    	}
-	    }
-	    
-		}
-	}
-} // END #header
+          &:before {
+            content: " / ";
+          }
+          &:last-of-type:after {
+            content: " /";
+          }
+        }
+      }
+    }
+  }
+}
+
+/**************************************************
+*********************** FOOTER ********************
+**************************************************/
 
 footer {
   bottom: 0;
@@ -232,7 +261,7 @@ footer {
   right: 0;
   font-size: 0.8rem;
 	& .footer_content {
-		border-top: 1px solid $color_brd;
+		border-top: 1px solid $color_1;
 
 		& p:first-child {
 			float: left;
@@ -259,17 +288,36 @@ footer {
 	}
 }
 
+/**************************************************
+********************* BLOG POSTS ******************
+**************************************************/
+
 article {
 	margin-bottom: 3rem;
 
 	& h1,
 	// for titles in tag pages
 	& h2.h1 {
-		border-bottom: 1px solid #e2ebce;
-    letter-spacing: -1px;
-    line-height: 1.2;
-    margin: 0 0 1rem;
-    padding-bottom: 0.5rem;
+		border-bottom: 1px solid $color_3;
+		// letter-spacing: -1px;
+		line-height: 1.2;
+		margin: 0 0 1rem;
+		padding-bottom: 0.5rem;
+	}
+
+	&.bgl {
+		a:not(.hvr_over) {
+			padding: 0 2px;
+			background: transparent linear-gradient($color_1, $color_1) no-repeat scroll center bottom/100% 2px;
+			background-size: 100% 2px;
+			transition: background-size 0.2s ease 0s, color 0.2s ease 0s;
+
+			&:hover,
+			&:active {
+				color: $color_4;
+				background-size: 100% 100%;
+			}
+		}
 	}
 
 	& p.meta {
@@ -311,13 +359,92 @@ article {
 	}
 }
 
-// Based on http://brajeshwar.github.io/paginate/
+// Previous/Next links in blog posts
+.pagination_article {
+  border-top: 1px solid $color_1;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding-top: 1rem;
+
+  & a {
+    text-align:center;
+    display: block;
+    position: relative;
+    color: $color_4;
+    transition: color 0.8s ease 0.1s;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color_2;
+    }
+
+    &.pa_older {
+      & .pa_arrow {
+        margin-left: 2%;
+      }
+      & .pa_title {
+        text-align: right;
+      }
+    } 
+    &.pa_recent .pa_arrow {
+      margin-right: 2%;
+    }
+
+    & div {
+      display:inline-block;
+      vertical-align:middle;
+      text-align:left;
+      &.pa_arrow {
+        font-size: 2rem;
+        width: 1.5rem;
+
+        
+      }
+      &.pa_title {
+        max-width: 75%;
+        & span {
+          font-size: 0.8rem;
+        }
+        & .pa_date {
+          font-style: italic;
+          display: inline-block;
+          width: 100%;
+          font-size: 0.7rem;
+        }
+      }
+    }
+    
+  }
+  @media only screen and (min-width: 700px) {
+    & .pa_older .pa_arrow {
+      margin-left: 1rem;
+      transition: margin-left 0.8s ease 0.1s;
+    }
+    & .pa_recent .pa_arrow {
+      margin-right: 1rem;
+      transition: margin-right 0.8s ease 0.1s;
+    }
+    & .pa_older:hover .pa_arrow {
+      
+      margin-left: 3rem;
+    }
+    & .pa_recent:hover .pa_arrow {
+      margin-right: 3rem;
+    }
+  } 
+}
+
+/**************************************************
+********************* PAGINATION ******************
+** based on http://brajeshwar.github.io/paginate **
+**************************************************/
 .pagination {
 	text-align: center;
 	margin-bottom: 4rem;
 	margin-top: 2rem;
 	padding-top: 2rem;
-	border-top: 1px solid $color_brd;
+	border-top: 1px solid $color_1;
 
 	& ul {
 		list-style: none outside none;
@@ -347,16 +474,23 @@ article {
 		    margin: 1px 2px;
 		    padding: 5px 10px;
 		    text-decoration: none;
+        color: $color_4;
+        transition: background-color 0.4s linear, color 0.4s linear;
 
 		    &:hover, &:focus {
-		    	background-color: $color_hvr;
+		    	background-color: $color_2;
 		    	color: #fff;
 		    }
 
+        &:active {
+          background-color: $color_3;
+          color: #fff;
+        }
+
 		    
 		    &.page_active {
-		    	background-color: $color_hbg;
-			    border-color: $color_brd;
+		    	background-color: $color_4;
+			    border-color: $color_2;	
 			    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.75) inset;
 			    color: #fff;
 			    text-shadow: 0 1px 0 black;
@@ -415,97 +549,10 @@ article {
 	}
 }
 
-// Previous/Next links in blog posts
-.pagination_article {
-	border-top: 1px solid $color_brd;
-  margin-top: 3rem;
-  padding-top: 1rem;
 
-	& a {
-		text-align:center;
-		display: block;
-		position: relative;
-
-		&.pa_older {
-			& .pa_arrow {
-				margin-left: 2%;
-			}
-			& .pa_title {
-				text-align: right;
-			}
-		} 
-		&.pa_recent .pa_arrow {
-			margin-right: 2%;
-		}
-
-		& div {
-		  display:inline-block;
-		  vertical-align:middle;
-		  text-align:left;
-		  &.pa_arrow {
-				font-size: 2rem;
-	    	width: 1.5rem;
-
-	    	
-			}
-			&.pa_title {
-				max-width: 75%;
-				& span {
-					font-size: 0.8rem;
-				}
-				& .pa_date {
-					font-style: italic;
-					display: inline-block;
-					width: 100%;
-    			font-size: 0.7rem;
-				}
-			}
-		}
-		
-	}
-	@media only screen and (min-width: 700px) {
-		& .pa_older .pa_arrow {
-			margin-left: 1rem;
-			transition: margin-left 0.8s ease 0.1s;
-		}
-		& .pa_recent .pa_arrow {
-			margin-right: 1rem;
-			transition: margin-right 0.8s ease 0.1s;
-		}
-		& .pa_older:hover .pa_arrow	{
-			
-			margin-left: 3rem;
-		}
-		& .pa_recent:hover .pa_arrow {
-			margin-right: 3rem;
-		}
-	}	
-}
-
-// For Syntaxhighliter -- override shCore.css
-.syntaxhighlighter {
-	padding: 0.5em 0;
-
-	& > table {
-
-		& > tbody {
-
-			& > tr {
-
-				& > td {
-
-					& > div {
-						font-size: 0.8rem!important;
-
-						& > div > code {
-							font-size: 0.8rem!important;
-						}
-					}
-				}
-			}
-		}
-	}
-}
+/**************************************************
+********************* TAGS LIST *******************
+**************************************************/
 
 .tags_list {
 	list-style: none outside none;
@@ -529,15 +576,20 @@ article {
 	}
 	@media only screen and (max-width: 400px) {
 		& {
-	    -webkit-column-count: 2; /* Chrome, Safari, Opera */
-	  		 -moz-column-count: 2; /* Firefox */
-		  				column-count: 2;
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2; /* Firefox */
+			column-count: 2;
 			-webkit-column-gap: 20px; /* Chrome, Safari, Opera */
-	  		 -moz-column-gap: 20px; /* Firefox */
-	  		 			column-gap: 20px;
+  		    -moz-column-gap: 20px; /* Firefox */
+ 			column-gap: 20px;
 		}
 	}
 } 
+
+/**************************************************
+**************** VERTICAL TIMELINE ****************
+*********** CV & first level categories ***********
+**************************************************/
 
 ul.wlist, ul.wlist li {
 	list-style: none;
@@ -551,7 +603,7 @@ ul.wlist, ul.wlist li {
   position: relative;
 
   &:before {
-		background-color: #374641;
+		background-color: $color_4;
 	  bottom: 0;
 	  content: "";
 	  left: 6rem;
@@ -564,6 +616,7 @@ ul.wlist, ul.wlist li {
 
 		&:hover .vtl_point .fa:before {
 			content: "\f111";
+            color: $color_2;
 		}
 
 		& .vtl_date {
@@ -598,7 +651,7 @@ ul.wlist, ul.wlist li {
 		}
 
 		& .vtl_point {
-			color: #374641;
+			color: $color_2;
 		  font-size: 1rem;
 		  left: 5.65rem;
 		  position: absolute;
@@ -623,7 +676,7 @@ ul.wlist, ul.wlist li {
 		content: "\f10c";
 	}
 	& a:hover .fa {
-		color: $color_hbg;
+		color: $color_2;
 	}
 	& a:hover .fa:before {
 		content: "\f111";
