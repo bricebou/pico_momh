@@ -20,13 +20,17 @@ $inner_pad: 20px;
 ************* TYPOGRAPHY ***************
 ***************************************/
 
-$font_basesize: 13px;
-$font_text: 'Open Sans';
-$font_title: 'Open Sans Condensed';
+$font_basesize: 12px;
+$font_text: 'Route 159';
+$font_title: 'Route 159';
+$light: 200;
+$normal: 300;
+$bold: 600;
 
 html {
   font-family: $font_text;
   font-size: $font_basesize;
+  font-weight: $normal;
   line-height: 1.45;
 
   @media only screen and (max-width: 499px) {
@@ -46,6 +50,11 @@ html {
   }
 }
 
+b,
+strong {
+  font-weight: $bold;
+}
+
 h1,
 h2,
 h3,
@@ -56,20 +65,20 @@ h6 {
 }
 h1 {
   font-size: 2.5rem;
-  font-weight: 300;
+  font-weight: $light;
 }
 h2 {
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: $light;
 }
 h3 {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: $light;
 }
 h4 {
   font-size: 1.2rem;
   font-variant: small-caps;
-  font-weight: 300;
+  font-weight: $light;
 }
 
 // Awesome font

@@ -109,17 +109,19 @@ header {
   h1#site_title {
     font-size: 2rem;
     font-family: $font_title;
-    font-weight: 300;
+    font-weight: $light;
     text-align: center;
     margin-bottom: 2rem;
     margin-top: 1rem;
     text-transform: lowercase;
     font-style: italic;
+    // text-shadow: -1px -1px 0px $color_4, 1px 1px 0px $color_2;
+    text-shadow: 1px 1px 0px $color_2;
 
     a,
     a:visited {
       color: $color_bg;
-      transitio: color 0.2s linear;
+      transition: color 0.8s ease;
     }
 
     a:focus,
@@ -640,7 +642,7 @@ ul.wlist, ul.wlist li {
 		  position: relative;
 
           .poste_intit {
-          	font-weight: bold;
+          	font-weight: $bold;
           }
           .poste_lieu {
 
