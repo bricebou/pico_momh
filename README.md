@@ -21,6 +21,11 @@ You can check how the contents are organized on my website on my [momh_content
 - [Mary Lou](http://tympanus.net/codrops/2013/05/02/vertical-timeline/) for the vertical line used in my category and supra-category pages;
 - ...
 
+## Fonts
+
+- [Route 159](http://dotcolon.net/font/route159/) by Sora Sagano&nbsp;;
+- [Font Awesome 4.7.0](https://fontawesome.com/v4.7.0/).
+
 ## Pico plugins in use on _momh.fr_
 
 - [PicoTags](https://github.com/bricebou/PicoTags);

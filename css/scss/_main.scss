@@ -67,6 +67,10 @@ a:hover {
   color: $color_3;
 }
 
+a.anchor {
+    display: none;
+}
+
 a.hvr_over {
   text-decoration: none;
 	color: $color_4;

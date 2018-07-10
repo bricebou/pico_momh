@@ -20,7 +20,7 @@ $inner_pad: 20px;
 ************* TYPOGRAPHY ***************
 ***************************************/
 
-$font_basesize: 12px;
+$font_basesize: 13px;
 $font_text: 'Route 159';
 $font_title: 'Route 159';
 $light: 200;
@@ -31,7 +31,7 @@ html {
   font-family: $font_text;
   font-size: $font_basesize;
   font-weight: $normal;
-  line-height: 1.45;
+  line-height: 1.55;
 
   @media only screen and (max-width: 499px) {
     & {
