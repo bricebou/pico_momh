@@ -26,7 +26,7 @@
       </article>
       <div class="pagination_article">
             {% if prev_page %}
-                <a href="{{ next_page.url }}" class="pa_recent">
+                <a href="{{ prev_page.url }}" class="pa_recent">
                     <div class="pa_arrow"><i class="fa fa-angle-double-left"></i></div>
                     <div class="pa_title">
                         <span class="pa_date">{{ prev_page.date|date("d/m/Y", "Europe/Paris") }}</span>
@@ -36,7 +36,7 @@
                 </a>    
             {% endif %} 
             {% if next_page %}
-                <a href="{{ prev_page.url }}" class="pa_older">
+                <a href="{{ next_page.url }}" class="pa_older">
                     <div class="pa_title">
                         <span>{{ next_page.title }}</span>
                         <br>
