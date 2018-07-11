@@ -34,7 +34,7 @@
 
       {% set pagi_maxpage = (pagi_pages_array|length / pagi_slice_length)|round(0, 'ceil') %}  
     
-      {% for page in pagesbis|slice(pagi_slice_start, pagi_slice_length, preserve_keys) %}
+      {% for page in pagi_pages_array|slice(pagi_slice_start, pagi_slice_length, preserve_keys) %}
         <article class="post">
           <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
             <p class="meta clearfix">

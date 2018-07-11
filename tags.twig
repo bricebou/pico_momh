@@ -27,7 +27,7 @@
           
       <h1><i class="fa fa-tag"></i><a href="{{ page.url }}">#{{ current_tag }}</a></h1>
 
-      {% for page in tag_pages|slice(pagi_slice_start, pagi_slice_length, preserve_keys) %}      
+      {% for page in pagi_pages_array|slice(pagi_slice_start, pagi_slice_length, preserve_keys) %}      
         <article>
           <h2 class="h1"><a href="{{ page.url }}">{{ page.title }}</a></h2>
           <p class="meta clearfix">
