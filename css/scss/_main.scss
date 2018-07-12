@@ -68,7 +68,9 @@ a:hover {
 }
 
 a.anchor {
-    display: none;
+  visibility: hidden;
+  width: 0 !important;
+  padding: 0 !important;
 }
 
 a.hvr_over {
@@ -384,7 +386,7 @@ article {
     &:hover,
     &:focus,
     &:active {
-      color: $color_2;
+      color: $color_3;
     }
 
     &.pa_older {
@@ -412,13 +414,13 @@ article {
       &.pa_title {
         max-width: 75%;
         & span {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
         }
         & .pa_date {
           font-style: italic;
           display: inline-block;
           width: 100%;
-          font-size: 0.7rem;
+          font-size: 0.75rem;
         }
       }
     }
