@@ -9,26 +9,65 @@
   <section id="content">
     <div class="inner">
       <article>
-
         <h1>{{ meta.title }}</h1>
-        {% set cate = meta.title|trim %}
 
-        <ul class="wlist vtl categ">
-          {% for page in pages %}
-            {% if page.meta["Category"]|trim is sameas(cate) and page.meta["template"]|trim != 'category' %}
+        {% if current_page.meta["Level"] == "top" %}
+          <div id="categories">
+            {% for child in current_page.tree_node.children %}
+              <div class="category">
+                <h2>
+                  <a href="{{ child.page.url }}">{{ child.page.title }}</a>
+                </h2>
+                <ul class="postsincat">
+                  {% if child.children|length >= 10 %}
+                    {% set maxitems = 5 %}
+                  {% else %}
+                    {% set maxitems = (child.children|length / 2)|round(0, 'ceil') %}
+                  {% endif %}
+                  {% for grandchild in child.children|slice(0,10) %}
+                    {% set counter = ( counter | default(0) ) + 1 %}
+                    <li>
+                      <a href="{{ grandchild.page.url }}">
+                        <div class="{% if counter <=  maxitems %}postsincat_left{% else %}postsincat_right{% endif %}">
+                          <span class="postsincat_date">
+                            {{ grandchild.page.date|date("d/m/Y", "Europe/Paris")}}
+                          </span>
+                          <i class="fa"></i>
+                          <span class="postsincat_title">{{ grandchild.page.title }}</span>
+                        </div>
+                      </a>
+                    </li>            
+                  {% endfor %}
+                </ul>
+                {% if child.children|length > 10 %}
+                  <p class="seeall">
+                    <a class="postsincat_more" href="{{ child.page.url }}"><span>Tous les articles dans {{ child.page.title }} <i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                  </p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <ul class="postsincat">
+            {% set maxitems = (current_page.tree_node.children|length / 2)|round(0, 'ceil') %}
+            {% for child in current_page.tree_node.children %}
+              {% set counter = ( counter | default(0) ) + 1 %}
               <li>
-                <a href="{{ page.url }}">
-                    <time class="vtl_date meta" datetime="{{ page.date }}" ><span>{{ page.date|date("d/m/Y", "Europe/Paris")}}</span></time>
-                    <div class="vtl_point"><i class="fa"></i></div>
-                    <div class="vtl_label">
-                        {{ page.title }}
-                    </div>
+                <a href="{{ child.page.url }}">
+                  <div class="{% if counter <=  maxitems %}postsincat_left{% else %}postsincat_right{% endif %}">
+                    <span class="postsincat_date">
+                      {{ child.page.date|date("d/m/Y", "Europe/Paris")}}
+                    </span>
+                    <i class="fa"></i>
+                    <span class="postsincat_title">{{ child.page.title }}</span>
+                  </div>
                 </a>
               </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-    </article>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </article>
+    </div> {# END .inner #}
   </section>
   <!-- FOOTER -->
   {% include 'includes/footer.twig' %}

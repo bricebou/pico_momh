@@ -299,6 +299,152 @@ footer {
 }
 
 /**************************************************
+******************** CATEGORIES  ******************
+**************************************************/
+.category > h2 > a {
+  color: $color_4;
+  padding: 0 2px;
+  background: transparent linear-gradient($color_1, $color_1) no-repeat scroll center top/100% 2px;
+  background-size: 100% 2px;
+  transition: background-size 0.2s ease 0s, color 0.2s ease 0s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color_4;
+    background-size: 100% 100%;
+  }
+}
+
+ul.postsincat {
+  list-style-type: none;
+  padding: 0;
+  @media only screen and (min-width: 600px) {
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    -webkit-column-gap: 2rem;
+    -moz-column-gap: 2rem;
+    column-gap: 2rem;
+  }
+
+  li {
+    display: block;
+    @media only screen and (min-width: 600px) {
+      page-break-inside: avoid;
+    }
+    a {
+      display: block;
+      padding: 0.5rem 0;
+
+      div {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-align-content: stretch;
+        -ms-flex-line-pack: stretch;
+        align-content: stretch;
+        
+        @media only screen and (min-width: 600px) {
+          
+          &.postsincat_right {
+            -webkit-flex-direction: row-reverse;
+            -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+
+            .postsincat_title {
+              text-align: right;
+            }
+          }
+        }
+
+        > * {
+          -webkit-order: 0;
+          -ms-flex-order: 0;
+          order: 0;
+          -webkit-flex: 0 1 auto;
+          -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+          -webkit-align-self: baseline;
+          -ms-flex-item-align: baseline;
+          align-self: baseline;
+        }
+      }
+
+      span {
+        &.postsincat_date {
+          font-size: 0.8rem;
+          font-style: italic;
+        }
+      }
+
+      i.fa {
+        color: $color_4;
+        &::before {
+          content: "\0000a0\0000a0\f10c";
+        }
+      }
+
+      &:hover {
+        i.fa {
+          &::before {
+            content: "\0000a0\0000a0\f111";
+          }
+        }
+      }
+    }
+  }
+}
+
+p.seeall {
+  text-align: right;
+  a.postsincat_more {
+    display: inline-block;
+    padding: 0.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: $color_1;
+    background-color: $color_4;
+    transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+    
+    .fa {
+      font-size: 1.3rem;
+      font-weight: 700;
+      vertical-align: -10%;
+      position: relative;
+      left: 0;
+      transition: left 0.4s ease;
+
+      &::after {
+        content: "";
+      }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color_4;
+      background-color: $color_1;
+
+      .fa {
+        left: 1.2rem;
+      }
+    }
+  }
+}
+
+/**************************************************
 ********************* BLOG POSTS ******************
 **************************************************/
 
@@ -323,7 +469,8 @@ article {
       transition: background-size 0.2s ease 0s, color 0.2s ease 0s;
 
       &:hover,
-      &:active {
+      &:active,
+      &:focus {
         color: $color_4;
         background-size: 100% 100%;
       }
@@ -592,7 +739,7 @@ article {
 
 /**************************************************
 **************** VERTICAL TIMELINE ****************
-*********** CV & first level categories ***********
+******************** CV PAGE **********************
 **************************************************/
 
 ul.wlist, ul.wlist li {
@@ -669,24 +816,4 @@ ul.wlist, ul.wlist li {
       }
     }
   }
-}
-.supcateg > li {
-  margin-bottom: 2rem;
-  
-  &:last-child > ul{
-    margin-bottom: 6rem;
-  }
-  & .fa:before {
-    content: "\f10c";
-  }
-  & a:hover .fa {
-    color: $color_2;
-  }
-  & a:hover .fa:before {
-    content: "\f111";
-  }
-}
-
-.categ > li:last-child {
-  margin-bottom: 6rem;
 }
