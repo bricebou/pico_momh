@@ -25,7 +25,7 @@
       {% set pagi_maxpage = (pagi_pages_array|length / pagi_slice_length)|round(0, 'ceil') %}
       
           
-      <h1><i class="fa fa-tag"></i><a href="{{ page.url }}">#{{ current_tag }}</a></h1>
+      <h1><i class="fa fa-tag"></i>#{{ current_tag|e }}</h1>
 
       {% for page in pagi_pages_array|slice(pagi_slice_start, pagi_slice_length, preserve_keys) %}      
         <article>
@@ -35,7 +35,7 @@
                 le {{ page.date|date("d/m/Y", "Europe/Paris") }} dans {{ page.meta["Category"] }}
             </span>
             <span class="tags_lsp">
-                {% if page.meta["Tags"] %}<i class="fa fa-tags"></i>{% for tag in page.meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}{% endif %} 
+                {% if page.meta["Tags"] %}<i class="fa fa-tags"></i>{% for tag in page.meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag|e('url') }}">#{{ tag|e }}</a>{% endfor %}{% endif %} 
             </span>
           </p>
          
@@ -54,7 +54,7 @@
         <h1><i class="fa fa-tags"></i>Tous les tags</h1>
         <ul class="tags_list">
             {% for tag in tag_list %}
-                <li><a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a></li>
+                <li><a href="{{ base_url }}/tag/{{ tag|e('url') }}">#{{ tag|e }}</a></li>
             {% endfor %}
         </ul>
       </article>

@@ -18,7 +18,7 @@
 
         <ul class="tags_list">
           {% for tag in tag_list %}
-            <li><a href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a></li>
+            <li><a href="{{ base_url }}/tag/{{ tag|e('url') }}">#{{ tag|e }}</a></li>
           {% endfor %}
         </ul>
       </article>

@@ -16,7 +16,7 @@
             </span>
             {% if meta["Tags"][0] != "" %}
               <span class="tags_lsp">
-                <i class="fa fa-tags"></i>{% for tag in meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag }}">#{{ tag }}</a>{% endfor %}
+                <i class="fa fa-tags"></i>{% for tag in meta["Tags"] %}<a class="hvr_over" href="{{ base_url }}/tag/{{ tag|e('url') }}">#{{ tag|e }}</a>{% endfor %}
               </span>
             {% endif %}
         </p>
