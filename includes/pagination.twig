@@ -1,5 +1,9 @@
 {% set pagi_next_page = pagi_basepage + 1 %}
 {% set pagi_prev_page = pagi_basepage - 1 %}
+{% if pagi_max_near_by is null %}
+  {% set pagi_max_near_by = 3 %}
+{% endif %}
+
 {% if pagi_maxpage > 1 %}
 <div class="pagination clearfix">
   <ul>
@@ -7,9 +11,17 @@
       <li class="pi" {% if pagi_prev_page < 1 %}style="visibility: hidden;"{% endif %}><a href="{% if pagi_prev_page == 1 %}{{ pagi_base_url }}{% else %}{{ pagi_base_url ~ '/?' ~ pagi_http_param ~ '=' ~  pagi_prev_page }}{% endif %}" title="Plus récents" id="prev_page_link"><i class="fa fa-clock-o"></i><i class="fa fa-angle-right"></i></a></li>
     {% endif %}
 
+    {% if pagi_basepage - pagi_max_near_by > 1 %}
+      <li class="pi">&hellip;</li>
+    {% endif %}
+
     {% for item in range(1, pagi_maxpage|number_format) %}
-      <li class="pi {%if item == pagi_basepage %} pi_a{%endif %}"><a href="{% if item == 1 %}{{ pagi_base_url }}{% else %}{{ pagi_base_url ~ '/?' ~ pagi_http_param ~ '=' ~ item }}{% endif %}" class="page_item {%if item == pagi_basepage %} page_active{%endif %}">{%if item == pagi_basepage %}<i class="fa fa-clock-o"></i><span>{{ item }}</span>{% else %}{{ item }}{%endif %}</a></li>
+      <li {% if pagi_basepage - pagi_max_near_by > item or pagi_basepage + pagi_max_near_by < item  %}style="display:none;"{% endif %} class="pi {%if item == pagi_basepage %} pi_a{%endif %}"><a href="{% if item == 1 %}{{ pagi_base_url }}{% else %}{{ pagi_base_url ~ '/?' ~ pagi_http_param ~ '=' ~ item }}{% endif %}" class="page_item {%if item == pagi_basepage %} page_active{%endif %}">{%if item == pagi_basepage %}<i class="fa fa-clock-o"></i><span>{{ item }}</span>{% else %}{{ item }}{%endif %}</a></li>
     {% endfor %}
+
+    {% if pagi_basepage + pagi_max_near_by < pagi_maxpage %}
+      <li class="pi">&hellip;</li>
+    {% endif %}
     
     {% if pagi_next_page is not null %}
       <li class="pi" {% if pagi_next_page > pagi_maxpage %}style="visibility: hidden;"{% endif %}><a href="{{ pagi_base_url ~ '/?' ~ pagi_http_param ~ '=' ~ pagi_next_page }}" title="Plus anciens" id="next_page_link"><i class="fa fa-angle-left"></i><i class="fa fa-clock-o"></i></a></li>
